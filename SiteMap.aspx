@@ -1,0 +1,85 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/SubHomeMaster.master" AutoEventWireup="true" CodeFile="SiteMap.aspx.cs" Inherits="SiteMap" Title="" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderSubMasterHead" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderSubMasterBody" Runat="Server">
+ <div class="inner-banner contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="content">
+                            <h1>SiteMap</h1>
+                            <p>Mahatna Gandhi Institute of Technology & Management</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-3"> <a href="Registration.aspx" class="apply-online clearfix">
+                        <div class="left clearfix"> <span class="icon"><img src="images/apply-online-sm-ico.png" class="img-responsive" alt=""></span> <span class="txt">Apply Online</span> </div>
+                        <div class="arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                        </a></div>
+                </div>
+            </div>
+        </div>
+
+
+<section class="about inner padding-lg" style="padding-bottom:0px;">
+            <div class="container">
+		
+<div class="css-panes">
+
+    <div id="t1" class="pane" style="display: block;">
+    
+    <div style="width:100%; float:left;">
+        
+      <div class="container clearfix">
+    <h3>MGITM Home</h3>
+
+<a href="Default.aspx" title="MGITM">GURUKUL PROFESSIONALS `N' TECHNICALS INSTITUTE</a>
+
+<h3>About MGITM</h3>
+
+<a href="AboutUs.aspx" title="GURUKUL PROFESSIONALS `N' TECHNICALS INSTITUTE">About GURUKUL PROFESSIONALS `N' TECHNICALS INSTITUTE</a>
+<ul class="sitemap">
+	<li><a href="Chairman.aspx">Chairman Message</a></li>
+	<li><a href="Linkages.aspx">Linkage & Authorities</a></li>
+	<li><a href="Course.aspx">Course</a></li>
+	<li><a href="HowToGetAffilations.aspx">How to Get Affilaton</a></li>
+	<li><a href="#">Advisory Council</a></li>
+	<li><a href="#">Senior Advisors</a></li>
+	<li><a href="Testimonials.aspx">Testimonials</a></li>
+	<li><a href="Enquiry.aspx">Enquiry</a></li>
+	<li><a href="ContactUs.aspx">Contact Us</a></li>
+	
+</ul>
+
+
+	
+
+	
+	
+  	
+    </div>
+     
+       
+       
+       
+       
+		
+		<script>
+$(function() {
+
+  $("ul.css-tabs").tabs("div.css-panes > div", { history: true });
+  
+
+  
+});
+</script>
+		
+		
+	</div>
+	</div>
+	</div>
+	
+	</div>
+    </section>
+</asp:Content>
+
