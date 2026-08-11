@@ -1,0 +1,625 @@
+
+
+.clear {clear: both; margin: 0px; height:0}
+#outercontainer{width:100%; margin:0 auto; padding:0px;}
+#outercontainer .up{width:100%; background:url(../examimages/sideshadow.png) repeat-y;}
+#outercontainer .bottom{width:100%; height: 38px; background: url(../examimages/bottomshadow.png) no-repeat bottom; padding:0px;}
+
+#container{width:100%; margin:0 auto; padding:0px; min-height: 100%;height: auto; height: 100%;}
+#header{width:960px; height: 135px; position: relative;}
+#menucontainer{
+	width:100%;
+	height:41px;
+	position:relative;
+        /*background-color: #ffffff;*/
+	background:url(../examimages/main-bg.png) repeat-x;
+        z-index:500;
+}
+.form:hover
+{
+	padding: 10px;
+border: 4px solid rgba(173, 169, 169, 0.64);
+border-radius: 4px;
+box-shadow: 7px 9px 8px rgb(236, 230, 230);
+-webkit-box-shadow: 1px 2px 5px 2px rgb(163, 163, 163);
+}
+
+.form
+{
+	padding: 10px;
+border: 4px solid rgba(173, 169, 169, 0.64);
+border-radius: 4px;}
+/*Menu START*/
+.ddsmoothmenu{
+position: relative;
+font: normal 12px Verdana;
+background: url(../examimages/main-bg.png);
+height: 41px;
+z-index:600;
+}
+
+.ddsmoothmenu ul{
+z-index:700;
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+/*Top level list items*/
+.ddsmoothmenu ul li{
+position: relative;
+display: inline;
+float: left;
+background: url(../examimages/main-delimiter.png) 98% 4px no-repeat;
+}
+.ddsmoothmenu ul li.marq{
+position: relative;
+display: inline;
+float: left;
+padding-top: 12px;
+width: 400px;
+background: none;
+}
+.ddsmoothmenu ul li.marq p{
+font-size: 12px; 
+font-weight: bold;
+color: #7fa805;
+font-family: verdana;
+text-align: center;
+}
+/*Top level menu link items style*/
+.ddsmoothmenu ul li a.top{
+display: block;
+color: white;
+
+color: #2d2b2b;
+padding: 12px 12px 12px 12px;
+text-decoration: none;
+
+}
+
+* html .ddsmoothmenu ul li a.top{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+.ddsmoothmenu ul li a.top:link, .ddsmoothmenu ul li a.top:visited{
+color: white;
+}
+
+.ddsmoothmenu ul li a.top.selected{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+background: url(../examimages/hover1.png) repeat-x;
+color: black;
+}
+
+.ddsmoothmenu ul li a.top:hover{
+background: url(../examimages/hover1.png) repeat-x;
+color: black;
+}
+	
+/*1st sub level menu*/
+.ddsmoothmenu ul li ul{
+position: absolute;
+left: 0;
+display: none; /*collapse all sub menus to begin with*/
+visibility: hidden;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.ddsmoothmenu ul li ul li{
+display: list-item;
+float: none;
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.ddsmoothmenu ul li ul li ul{
+top: 0;
+}
+
+/* Sub level menu links style */
+.ddsmoothmenu ul li ul li a{
+font: normal 13px Verdana;
+width: 160px; /*width of sub menus*/
+padding: 5px;
+margin: 0;
+border-top-width: 0;
+border-bottom: 1px solid gray;
+display: block;
+background: #333333; /*background of menu items (default state)*/
+border-right: 1px solid #778;
+color: #ffffff;
+text-decoration: none;
+
+}
+* html .ddsmoothmenu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+.ddsmoothmenu ul li a:link, .ddsmoothmenu ul li a:visited{
+color: white;
+}
+
+.ddsmoothmenu ul li a.selected{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+background: url(../examimages/hover.png) repeat-x;
+color: black;
+}
+
+.ddsmoothmenu ul li a:hover{
+background: url(../examimages/hover.png) repeat-x;
+color: black;
+}
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu{height: 1%;} /*Holly Hack for IE7 and below*/
+
+
+/* ######### CSS classes applied to down and right arrow examimages  ######### */
+
+.downarrowclass{
+position: absolute;
+top: 16px;
+right: 7px;
+}
+
+.rightarrowclass{
+position: absolute;
+top: 6px;
+right: 5px;
+}
+#page_heading{
+	
+	width:100%;
+	height:30px; 
+	position:relative;
+	border-bottom:#d8d8d8 1px solid;
+    /*background-color: #f8f8f8;*/
+    margin-bottom:10px;
+    margin-top:0px;
+        
+}
+#page_heading p{
+	padding: 5px 8px 10px 8px; 
+	font: normal 17px Trebuchet MS;
+	color:#1589ff;
+}
+
+#page_heading1{
+	
+	width:960px;
+	height:35px; 
+	position:relative;
+	border-bottom:#d8d8d8 1px solid;
+    /*background-color: #f8f8f8;*/
+    margin-bottom:10px;
+    margin-top:0px;
+        
+}
+
+#page_heading1_left{
+	width:600px;
+	height:35px; 
+	position:absolute;
+	left: 0px;
+}
+#page_heading1_right{
+	
+	width:360px;
+	height:35px; 
+	position:absolute;
+    left: 600px;
+}
+
+#page_heading1_left p{
+	margin: 5px 8px 10px 8px; 
+	font: normal 17px Trebuchet MS;
+	color:#1589ff;
+}
+
+#detailDiv{
+ width: 100%;
+ /*background-color: #ffffff;   */
+}
+table.detailTable{
+	font-family: verdana;
+    /*border-collapse: collapse;*/
+}
+table.detailTable td{
+	font-weight: normal;
+	font-size: 11px;
+	color: #333333;
+}
+table.detailTable td.heading{
+
+	font-weight: bold;
+	font-size: 14px;
+	color: #ff8800;
+}
+table.detailTable td.heading3{
+
+	font-weight: bold;
+	font-size: 14px;
+	color: #ff8800;
+    border-bottom: 1px solid #e4edf6;
+}
+table.detailTable td.description{
+	font-weight: normal;
+	font-size: 11px;
+	color: #999999;
+	border-bottom: 1px solid #e4edf6;
+}
+
+table.detailTable td.heading1{
+	font-weight: normal;
+	font-size: 14px;
+	color: #7fa805;
+	border-bottom: 1px solid #e4edf6;
+}
+table.detailTable td.heading2{
+	font-weight: normal;
+	font-size: 12px;
+	color: #7fa805;
+	border: solid 1px #E8E8E8;
+        background: #FBFBFB;
+	text-align: center;
+}
+table.detailTable td.heading4{
+	font-weight: bold;
+	font-size: 11px;
+	color: #333333;
+	border: solid 1px #E8E8E8;
+    background: #FBFBFB;
+	text-align: center;
+}
+table.detailTable td.error{
+
+	font-weight: normal;
+	font-size: 12px;
+	color: #ff0000;
+}
+table.detailTable td.info{
+
+	font-weight: normal;
+	font-size: 12px;
+	color: #1589ff;
+}
+table.detailTable td.big{
+	font-weight: bold;
+	font-size: 16px;
+	color: #333333;
+}
+table.detailTable td.info1{
+
+	font-weight: bold;
+	font-size: 12px;
+	color: #ff0000;
+       
+}
+table.detailTable td.info2{
+
+	font-weight: bold;
+	font-size: 12px;
+	color: #1589ff;
+       
+}
+table.detailTable td.description1{
+	font-weight: normal;
+	font-size: 11px;
+	color: #999999;
+	
+}
+table.detailTable td.actions{
+	text-align: right;
+        border-bottom: 1px solid #e4edf6;
+}
+table.detailTable td.reqfield{
+	font-weight: normal;
+	font-size: 10px;
+	color: #ff0000;
+	text-align: left;
+}
+table.detailTable td.dues{
+	font-weight: bold;
+	font-size: 12px;
+	color: #ff0000;
+	text-align: left;
+}
+table.detailTable tr.result{
+	/*background-color: #f7ffdd;*/
+    line-height: 25px;
+}
+table.detailTable tr.result1{
+    line-height: 25px; 
+	/*background-color: #fff5e8;*/
+}
+table.resultTable{
+	font-family: verdana;	
+	border-collapse: collapse;
+}
+table.resultTable td{
+	font-weight: normal;
+	font-size: 11px;
+	color: #333333;
+}
+table.resultTable td.withborder{
+	font-weight: normal;
+	font-size: 11px;
+	color: #333333;
+    border-right: 1px solid #e4edf6;
+}
+table.resultTable td.mainheading{
+
+	font-weight: bold;
+	font-size: 14px;
+	color: #ff8800;
+    border-bottom: 1px solid #e4edf6;
+}
+table.resultTable td.data{
+	font-weight: bold;
+	font-size: 11px;
+	color: #333333;      	
+}
+table.resultTable td.desc{
+	font-weight: normal;
+	font-size: 10px;
+	color: #999999;      	
+}
+table.resultTable td.info{
+
+	font-weight: bold;
+	font-size: 11px;
+	color: #1589ff;
+}
+table.resultTable td.info2{
+
+	font-weight: bold;
+	font-size: 12px;
+	color: #1589ff;
+}
+table.resultTable td.navigation{
+    color: #333333;
+    font-size: 11px;
+    border-bottom: 0px;
+    font-weight: bold;
+}
+
+table.resultTable td.heading{
+	font-weight: bold;
+	font-size: 11px;
+	color: #333333;
+	border: solid 1px #E8E8E8;
+    background: #FBFBFB;
+    height:20px;
+}
+
+table.resultTable tr.result{
+	
+	/*background-color: #f7ffdd;*/
+}
+table.resultTable tr.result1{
+	
+	/*background-color: #fff5e8;*/
+}
+table.resultTable tr.result2 td{
+	
+	/*background-color: #1589ff;*/
+}
+
+
+legend{
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 12px;
+    color: #ff8800;
+}
+p.message{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 12px;
+    color: #333333;
+    line-height: 18px;
+}
+p.message1{
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 14px;
+    color: #ff0000;
+    line-height: 18px;
+}
+ol.simpleList{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 12px;
+    color: #333333;
+}
+ol.simpleList li{
+    line-height: 18px;
+    padding: 2px;
+}
+.detail_text
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 250px;
+}
+.detail_combo
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 254px;
+}
+.detail_text1
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 150px;
+    padding:5px;
+}
+.detail_combo1
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 197px;
+}
+.detail_combo2
+{
+	width:400px;
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+}
+.detail_text_other
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 130px;
+}
+.detail_text_year
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 50px;
+}
+ .detail_text_board
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 170px;
+}
+.detail_text_percentage
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 70px;
+}
+ .detail_text_subject
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000000;
+    width: 180px;
+}
+.detail_combo_small
+{
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 11px;
+    color: #333333;
+    width: 50px;
+}
+.butt
+{
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100px;
+}
+.butt1
+{
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 12px;
+    width: 150px;
+}
+a.navigation1{
+	font-family: verdana;
+    font-weight: normal;
+    font-size: 12px;
+	color: #1589ff;
+	text-decoration: none;
+}
+a.navigation1:hover{
+	text-decoration: underline;
+}
+a.navigation2{
+	font-weight: bold;
+    font-size: 11px;
+	color: #ff8800;
+	text-decoration: none;
+}
+a.navigation2:hover{
+	text-decoration: underline;
+}
+a.btnsml {
+	
+	height: 30px;
+	background: url(../examimages/btnsml_middle.png) repeat-x;
+	line-height: 40px;
+	padding: 7px 7px 10px 10px;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+    font-family:  verdana;
+}
+a.btnsml1 {
+	background: url(../examimages/btnsml_middle.png) repeat-x;
+	display: block;
+	padding: 2px;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+    font-family:  verdana;
+}
+.btn {
+    float:right;
+	clear: both;
+	background: url(../examimages/btn_left.png) no-repeat;
+	padding: 0 0 0 10px;
+	margin: 5px 0;
+}
+.btn a{
+    font-family: verdana;
+	float: left;
+	height: 30px;
+	background: url(../examimages/btn_middle.png) repeat-x left top;
+	line-height: 30px;
+	padding-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.btn span {
+	background: url(../examimages/btn_right.png) no-repeat;
+	float: left;
+	width: 10px;
+	height: 30px;
+}
+#footer {
+    width: 960px;
+    height: 40px;
+	text-align: center;
+	background: #f8f8f8;
+	color: #333333;
+	border-top:#e4edf6 2px solid;        
+}
+#footer p
+{
+	font-family: verdana;
+	color:#333333;
+	font-size:12px;
+	font-weight:normal;
+	padding-top: 12px;
+    text-align: center;
+}

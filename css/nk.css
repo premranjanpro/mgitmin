@@ -1,0 +1,146 @@
+body
+/*------------{  
+	
+	      background-color:#F8F5EE;  
+       	  margin : -5px;
+          padding : -5px;
+          text-align:center;
+ }---------*/
+.admin-contentBg
+{
+	background:#e2e2e2 url(../Images/admin-panelBg.gif);
+	background-repeat: repeat-x;
+	
+	 text-align: left;
+	 margin : -3px;
+       padding : -3px;
+}
+
+/*------------Admin related  Css---------*/
+ 
+.tableBody
+{
+	background-color: #F7F7F7;
+	font-family:Verdana;
+	font-size:12px;
+	border-color:Black;
+	border-style:solid;
+	border-width:thin;      
+	     
+} 
+
+.tdDownBorder
+{
+
+	
+	 border-bottom-style: solid;
+	  border-bottom-width: 1px;
+	   border-color: #000000
+	     
+} 
+.logintableHeading
+{
+	
+background-color: #0399D1; font-family: Verdana; font-size: 11pt;color:white;font-weight:bold;   
+height:25px; 
+}
+ /*-----------------End-------------------*/
+ 
+ 
+ 
+ /*------------User  related  Css---------*/
+ 
+ 
+
+.Grdheader
+{
+	background-color:#0099cc; /*:url(Images/parent_datalistHeader.jpg); */
+	
+/*	background-repeat: repeat-x; */
+	color:White; 
+	font-family: "Lucida Grande";
+	font-size: 15px;
+	font-style: normal;
+	vertical-align: middle;
+	font-weight: 700;
+	padding-left: 5px;
+	border-color:Black;
+	border-style:solid;
+	border-width:1px; 
+}
+
+.head
+{
+	/* background-color:#ffffff; */
+	
+	font-size: 10pt;
+	color: maroon;
+	font-family : Verdana;
+}
+
+
+.gridfonts
+{
+	/* background-color:#ffffff; */
+	border-color:#666666;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: Navy;
+	text-align:center;
+	 line-height:20pt;
+	 border:1px solid gray;
+	text-decoration: none;
+	border-width : 1px;
+	
+	vertical-align:top;
+}
+.heading
+{
+	/* Top heading text */
+	background-color: #ECE9D8; /*:url(Images/parent_datalistHeader.jpg); */
+	
+/*	background-repeat: repeat-x; */
+	color: black;
+	font-family: "Lucida Grande";
+	font-size: 15px;
+	font-style: normal;
+	vertical-align: middle;
+	font-weight: 700;
+	padding-left: 5px;
+	border-color: Black;
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+}
+
+.tdBorder
+{
+	border-color:Black;
+	border-style:solid;
+	border-width:1px;      
+} 
+
+.gridBody
+{
+	border-style:solid;
+	border-width:1px; 
+	border-color:Black;      
+}
+
+.imageHeightWidth
+{
+height:50px;
+width:50px; 	
+}
+.linkcolor
+ {
+ 	
+ font-family:Verdana; 
+ text-decoration:none;
+ font-size:7pt;
+ color:Black;           
+
+   
+ }
+
+ /*-----------------End-------------------*/

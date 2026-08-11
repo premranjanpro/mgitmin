@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "1",
+    "REGNO": "MGI/ME/11/1017",
+    "NAME": "RAHUL KUMAR",
+    "FATHERNAME": "SURESH KUMAR",
+    "COURSENAME": "DIPLOMA IN MECHANICAL ENGINEERING",
+    "COURSEDURATION": "3 Years",
+    "FirstYear": "750/1000",
+    "SecondYear": "780/1000",
+    "ThirdYear": "810/1000",
+    "Total": "2340/3000",
+    "Grade": "A",
+    "ISSUEDATE": "15 Jul 2021",
+    "COMPLETEDATE": "30 Jun 2021",
+    "ProfileImg": ""
+  },
+  {
+    "ID": "2",
+    "REGNO": "MGI/ACCA/08/1050",
+    "NAME": "AMIT SHARMA",
+    "FATHERNAME": "RAMESH SHARMA",
+    "COURSENAME": "CERTIFICATE IN ACCOUNTING",
+    "COURSEDURATION": "1 Year",
+    "FirstYear": "420/500",
+    "SecondYear": "",
+    "ThirdYear": "",
+    "Total": "420/500",
+    "Grade": "A+",
+    "ISSUEDATE": "10 Aug 2022",
+    "COMPLETEDATE": "31 Jul 2022",
+    "ProfileImg": ""
+  },
+  {
+    "ID": "3",
+    "REGNO": "MGI/HM/17/1013",
+    "NAME": "VIKAS VERMA",
+    "FATHERNAME": "MAHESH VERMA",
+    "COURSENAME": "DIPLOMA IN HOTEL MANAGEMENT",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "680/900",
+    "SecondYear": "710/900",
+    "ThirdYear": "",
+    "Total": "1390/1800",
+    "Grade": "A",
+    "ISSUEDATE": "05 Sep 2020",
+    "COMPLETEDATE": "25 Aug 2020",
+    "ProfileImg": "photos/MGIHM171013.jpeg"
+  }
+]

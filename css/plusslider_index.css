@@ -1,0 +1,181 @@
+/**
+	plusslider Version 1.4.4
+	By Jamy Golden
+	http://css-plus.com
+	
+	using alternate css for index to allow for different size pagination boxes
+**/
+
+/* plusslider Styling */
+/*#slideshow { position: relative; } */
+
+.plusslider {
+	/*
+	-webkit-background-clip: padding;
+	   -moz-background-clip: padding;
+	        background-clip: padding-box;
+	-webkit-border-radius: 15px;
+	   -moz-border-radius: 15px;
+	        border-radius: 15px;
+	background-color: rgba(255, 255, 255, 0.3);
+	border: 15px solid rgba(255, 255, 255, 0.3);
+	height: 250px;
+	*/
+	margin: 0 auto;
+	/*padding-bottom: 40px;*/
+	overflow: hidden;
+	position: relative;
+}
+
+.plusslider .child { float: left; }
+
+
+
+/* text content formatting */
+.plusslider img {
+	
+	position: relative;
+	width: 100%;
+}
+.plusslider .desc {
+	box-sizing: border-box; -moz-box-sizing: border-box;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 300px;
+   padding: 20px;
+}
+
+.plusslider .desc h1 {
+ font-size: 24px;
+ line-height: 120%;
+}
+.plusslider .desc .action {
+	width: 220px;
+	text-align:right;	
+}
+
+
+.plusslider .desc_large {
+	box-sizing: border-box; -moz-box-sizing: border-box;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 390px;
+   padding: 20px;
+   font-size: 14px;
+}
+
+.plusslider .desc_large h1 {
+	font-size: 30px; padding: 0px; color: #185A89; padding:0; margin:0;
+
+}
+.plusslider .desc_large h2 {
+	font-size: 18px; margin:0; padding: 10px 0 0px 0; color: #333; font-weight: normal;
+
+}
+.plusslider .desc_large .action {
+	padding-top: 10px;
+	width: 280px;
+	text-align:right;	
+}
+
+.plusslider p {
+	margin-top: 10px;	
+	
+}
+
+/* /slide text content formatting */
+
+
+/* Controls */
+.plusslider-pagination-wrapper {
+	 /*background-color: #f1f1f1; fallback color */
+
+	height: 30px;
+	width: 400px;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	z-index: 500;
+}
+
+.plusslider-pagination {
+	display: table;
+	margin: 0;
+	padding: 0;
+}
+
+.plusslider-pagination li {
+
+	box-sizing: border-box; -moz-box-sizing: border-box;
+	/*background-color: red;*/
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 0;
+	height: 30px;
+	margin: 0;
+	text-indent: -9999px; /*IE6 fix */
+	width: 30px;
+	position: relative;
+	border-right:1px solid #fff;
+	border-left:0;
+	background-color: #bbcee1;
+}
+
+.plusslider-pagination .current, .plusslider-pagination li:hover {
+	box-sizing: border-box; -moz-box-sizing: border-box;
+	/*border:0;
+	border-bottom: 0px;
+	*/
+	background-color: #8da3b5;
+	
+}
+
+.plusslider-arrows li {
+	background: url(../images/plus-sprite.png) no-repeat left top;
+	cursor: pointer;
+	display: block;
+	height: 32px;
+	margin-top: -16px;
+	opacity: 0;
+	width: 32px;
+	position: absolute;
+	top: 90%;
+	z-index: 200;
+	text-indent: -9999px;
+
+	/* Fade in/out .arrows on hover */
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 0.2s;
+	-webkit-transition-timing-function: ease-in;
+	   -moz-transition-property: opacity;
+	   -moz-transition-duration: 0.2s;
+	   -moz-transition-timing-function: ease-in;
+	    -ms-transition-property: opacity;
+	    -ms-transition-duration: 0.2s;
+	    -ms-transition-timing-function: ease-in;
+	     -o-transition-property: opacity;
+	     -o-transition-duration: 0.2s;
+	     -o-transition-timing-function: ease-in;
+	        transition-property: opacity;
+	        transition-duration: 0.2s;
+	        transition-timing-function: ease-in;
+}
+
+.plusslider:hover .plusslider-arrows li {opacity: 1; }
+.plusslider-arrows .prev {background-position: 0 -10px; right: 60px; }
+.plusslider-arrows .prev:hover {background-position: 0 -42px; right: 60px; }
+.plusslider-arrows .next {background-position: -33px -10px; right: 10px; }
+.plusslider-arrows .next:hover {background-position: -33px -42px; }
+
+/* PlusFader Specific */
+.plustype-fader .current { z-index: 2; }
+.plustype-fader .child { display: none; position: absolute; left: 0; top: 0; }
+.plustype-fader .plusslider-pagination { position: relative; z-index: 200; }
+
+/* no-javascript fallback */
+#slider > *, #slider2 > * { display: none; }
+#slider > *:first-child, #slider2 > *:first-child { display: block; }
+/* end no-javascript fallback */

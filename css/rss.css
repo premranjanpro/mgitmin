@@ -1,0 +1,87 @@
+.RSSAggrCont {
+    /*border-bottom:1px solid #ccc;*/
+    min-width:195px;
+    padding: 8px;
+    /*background:#fff;*/
+    margin:0px;
+    float:left;
+    font-family: Arial;
+}
+
+/* RSS Feeds */
+.rss_item_wrapper { 
+    padding-bottom: 8px;
+	padding-right: 5px;
+}
+.rss_item_wrapper:last-child {
+    padding-bottom: 0px;
+}
+.rss_item_header {
+    font-size:12px;
+    font-weight:bold;
+    padding-bottom:0px;
+}
+.rss_item_header a,
+.rss_item_header a:link,
+.rss_item_header a:visited,
+.rss_item_header a:hover,
+.rss_item_header a:active {
+    font-size:12px;
+    font-weight:bold;
+    text-decoration: none;
+    color:#1f9bec;
+}
+.rss_item_header a:hover {
+	text-decoration: underline;
+}
+.rss_item_info {
+    color:#999;
+    font-size:9px;
+}
+.rss_item_desc {
+    text-align:left;
+    font-size: 11px;
+    padding-bottom: 7px;
+    border-bottom:1px solid #ccc;
+   	margin-bottom: 0px;
+}
+.rss_read_more {
+    /*background-color:#EDEDED;*/
+    font-size:11px;
+    font-weight:normal;
+    height:30px;
+    line-height:20px;
+    vertical-align: middle;
+    margin-top:6px;
+    padding:0 9px;
+    text-align:right;
+    text-decoration:none;
+    text-transform:capitalize;
+}
+
+.rss_feed_wrapper {
+	height: 265px;
+/*	overflow: hidden; */
+	overflow:auto;
+
+}
+
+.loading_rss {
+    text-align:center;
+    width:60px;
+    height:64px;
+    /*background-image:url(../images/loading_bg.png);*/
+    z-index: 10;
+    margin: 10px auto;
+}
+.loading_rss img {
+    margin-top: 16px;
+}
+.loading_rss div {
+    width:89px;
+    height:64px;
+    /*background-image:url(../images/loading.gif);*/
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+

@@ -1,0 +1,250 @@
+/* Forms
+---------------------------------------------------------------------*/
+
+
+form { overflow:auto; display:inline; border:0; margin:0; padding:0; }
+textarea {
+	line-height:18px;
+	overflow:auto;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+input, textarea {
+	font-family:Arial, Helvetica, sans-serif;
+	padding:3px;
+	font-size: 12px;
+	color: #000000;
+	border: solid 1px #e5e5e5;
+
+}
+input:focus,textarea:focus { border: solid 1px #99ccff !important; }
+
+select { font-family: Arial; font-size: 12px; color: #275A7D; }
+
+fieldset {
+	border:0 none;
+	border-top:1px solid #ddd;
+	margin:10px 0;
+	padding:10px 0;
+	position:relative;
+}
+legend {
+	background:#fff;
+	color:#93BB3A;
+	font-weight:bold;
+	padding:0 6px 0 0;
+}
+label {
+	font-size:12px;
+	font-weight:bold;
+	float: left;
+	width: 120px;
+	font-weight: bold;
+}
+label.required:before {
+	content:"*";
+	color:red;
+	font-family:"Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+}
+label.ok {
+	background:url("../img/valid.gif") no-repeat;
+	padding-left:16px;
+}
+label.error {
+	color:#d00;
+	text-transform:none;
+	margin-left:6px;
+}
+label.choice {
+	vertical-align:middle;
+	font-weight:normal;
+	text-transform:none;
+}
+fieldset small {
+	color:#999;
+	font-size:11px;
+	display: block;
+}
+
+
+
+
+fieldset {
+	width: 380px; 
+	border: 1px solid #b7ddf2; 
+	padding: 0 5px 10px 5px;
+	margin: 10px 0 0 0;
+	padding-top: 0; /*to lose the added whitespace line in IEs*/ 
+}
+legend {
+	font-size:12px;
+	font-weight:bold;
+	margin: 10px 5px; /*to compensate space lost due to padding-incapability in IEs*/
+}
+
+.spacer{clear:both; height:1px;}
+
+
+/* ----------- stylized ----------- */
+#stylized{
+border:solid 2px #fff;
+background:#fff;
+}
+
+#stylized .formrow {
+  clear: both;
+  padding-top: 5px;
+  margin:0;
+  }
+
+
+#stylized h1 {
+font-size:14px;
+font-weight:bold;
+margin-bottom:14px;
+}
+#stylized p{
+font-size:12px;
+color:#666666;
+margin-bottom:20px;
+border-bottom:solid 1px #b7ddf2;
+padding-bottom:10px;
+}
+#stylized label { box-sizing: border-box; -moz-box-sizing: border-box;  display:block; font-weight:normal; text-align:right; width:190px; float:left; padding:4px 8px; }
+#stylized .small{
+color:#666666;
+display:block;
+font-size:11px;
+font-weight:normal;
+text-align:right;
+width:140px;
+}
+#stylized input{
+	width: 250px;
+padding:4px 2px;
+height: 14px;
+}
+#stylized textarea{
+padding:4px 2px;
+width: 250px;
+height: 36px;
+}
+
+#stylized select{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+float:left;
+font-size:12px;
+/*
+padding:3px 2px;
+border:solid 1px #aacfe4;
+height: 24px;
+*/
+margin:0px 0 5px 10px;
+}
+#stylized button{
+	clear:both;
+	margin: 20px 0 0 190px;
+}
+#stylized div{
+clear:both;
+margin: 5px 10px 15px 10px;
+
+}
+
+
+
+
+
+/* Form Buttons
+---------------------------------------------------------------------*/
+
+    .btn {
+      display:inline-block;
+      background:none;
+      margin-top:5px;
+      padding:3px 0;
+      border-width:0;
+      overflow:visible;
+      font:100%/1.2 Arial,Sans-serif;
+      text-decoration:none;
+      color:#333;
+      }
+
+      
+	.btn:hover {
+      text-decoration:none;
+      color:#333;
+    }
+    
+    * html button.btn {
+      padding-bottom:1px;
+      }
+    /* Immediately below is a temporary hack to serve the 
+       following margin values only to Gecko browsers
+       Gecko browsers add an extra 3px of left/right 
+       padding to button elements which can't be overriden.
+       Thus, we use -3px of left/right margin to overcome this. */
+    html:not([lang*=""]) button.btn {
+      margin:0 -3px;
+      }
+    .btn span {
+      background:#ddd url(../images/bg_button.gif) repeat-x 0 0;
+      margin:0;
+      padding:3px 0;
+      border-left:1px solid #bbb;
+      border-right:1px solid #aaa;
+      }
+    * html .btn span {
+      padding-top:0;
+      }
+    .btn span span {
+      position:relative;
+      padding:3px .4em;
+      border-width:0;
+      border-top:1px solid #bbb;
+      border-bottom:1px solid #aaa;
+      text-decoration:none;
+      color:#333;
+      }
+      
+
+    
+    /* pill classes only needed if using pill style buttons ( LEFT | CENTER | RIGHT ) */
+    button.pill-l span {
+      border-right-width:0;
+      }
+    button.pill-l span span {
+      border-right:1px solid #bbb;
+      }
+    button.pill-c span {
+      border-right-style:none;
+      border-left-color:#fff;
+      }
+    button.pill-c span span {
+      border-right:1px solid #bbb;
+      }
+    button.pill-r span {
+      border-left-color:#fff;
+      }
+    
+    /* only needed if implementing separate hover/focus/active state for buttons */
+    .btn:hover span, .btn:hover span span, .btn:focus span, .btn:focus span span {
+      cursor:pointer; /* important for any clickable/pressable element */
+      border-color:#9cf !important;
+      color:#000;
+      text-decoration:none;
+      }
+    .btn:active span {
+      background-position:0 -400px;
+      outline:none;
+      }
+    .btn:focus, .btn:active {
+      outline:none; /* doesn't seem to be respected for <button>, only <a> */
+      }
+
+    /* use if one button should be the 'primary' button */
+    .primary {
+      font-weight:bold;
+      color:#000;
+      }
