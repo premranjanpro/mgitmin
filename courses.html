@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Courses — MGITM India | 75+ Technical, Vocational & Management Diploma Programs</title>
+  <meta name="description" content="Browse MGITM's complete catalog of 75+ ISO certified diploma and certificate courses in Computer Science, Teacher Training, Finance, Engineering Trades, and Creative Arts.">
+  <meta name="keywords" content="MGITM courses, DCA diploma, ADCA computer course, teacher training DNTT, vocational courses India, computer diploma India">
+  <link rel="shortcut icon" href="images/glogo1.png">
+  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/modern-mgitm.css">
+</head>
+<body>
+<div id="loading"><div class="loader-ring"></div></div>
+<div class="top-strip"><div class="container-fluid"><div class="social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-youtube-play"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div><div class="email"><i class="fa fa-envelope"></i><a href="mailto:indiamgitm@gmail.com">indiamgitm@gmail.com</a></div></div></div>
+<header class="header-brand"><div class="container-fluid"><a href="index.html" class="logo"><img class="emblem" src="images/glogo1.png" alt="MGITM Emblem"><img class="title" src="images/glogo2.png" alt="MGITM"></a><div class="iso-badge hidden-xs"><i class="fa fa-certificate"></i><div><span>Quality Standard</span><strong>ISO 9001:2015 Certified</strong></div></div></div></header>
+<nav class="mgitm-nav"><div class="container-fluid"><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about-us.html">About Us</a></li><li><a href="director-message.html">Director Message</a></li><li class="active"><a href="courses.html">Courses</a></li><li><a href="result-verification.html">Result Verification</a></li><li><a href="branch-collaboration.html">Branch Collaboration</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="inquiry.html">Inquiry</a></li><li><a href="contact-us.html">Contact Us</a></li></ul><button class="nav-hamburger" id="navToggle"><i class="fa fa-bars"></i></button></div></nav>
+
+<div class="page-banner">
+  <h1>Course Catalog</h1>
+  <p>75+ accredited diploma &amp; certificate programs across 6 key academic domains — all ISO 9001:2015 certified.</p>
+  <nav class="breadcrumb-nav"><a href="index.html">Home</a> <span>›</span> Courses</nav>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <!-- Filters -->
+    <div class="course-filters">
+      <input type="text" id="searchInput" placeholder="&#xf002; Search course name..." onkeyup="filterTable()" style="flex:2;">
+      <select id="categoryFilter" onchange="filterTable()">
+        <option value="">All Categories</option>
+        <option value="Computer & IT">Computer &amp; IT</option>
+        <option value="Teacher Training">Teacher Training</option>
+        <option value="Finance & Management">Finance &amp; Management</option>
+        <option value="Engineering Trades">Engineering Trades</option>
+        <option value="Non-Engineering Trades">Non-Engineering Trades</option>
+        <option value="Health & Care">Health &amp; Care</option>
+        <option value="Typing">Typing</option>
+        <option value="Hospitality">Hospitality</option>
+      </select>
+    </div>
+
+    <div class="course-table-wrap">
+      <table class="table-clean" id="courseTable">
+        <thead>
+          <tr>
+            <th style="width:50px;">#</th>
+            <th>Course Name</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th style="text-align:center;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="courseBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+    <p id="noResults" style="display:none; text-align:center; padding:30px; color:var(--gray-400);">No courses found matching your search.</p>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>Ready to Start Your Skill Journey?</h2>
+  <p>Enroll in any MGITM program with our flexible Open Session System — no fixed deadlines.</p>
+  <a href="inquiry.html" class="btn-white">Apply Now <i class="fa fa-arrow-right"></i></a>
+</section>
+
+<footer class="site-footer"><div class="footer-inner"><div><h4>About MGITM</h4><p>ISO 9001:2015 certified institute. Delhi NCR, India.</p><p style="margin-top:12px;"><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div><div><h4>Quick Links</h4><ul><li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li><li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li><li><a href="courses.html"><i class="fa fa-angle-right"></i> Courses</a></li><li><a href="result-verification.html"><i class="fa fa-angle-right"></i> Result Verification</a></li><li><a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a></li></ul></div><div><h4>Official Desk</h4><p>Corporate Office: Delhi NCR, India</p><p><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div></div><div class="footer-bottom">© 2026 MGITM India. All Rights Reserved.</div></footer>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').style.display='none';},400);});
+document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+
+const courses = [
+  // Computer & IT
+  {name:"Diploma in Computer Application (DCA)",cat:"Computer & IT",dur:"6 Months"},
+  {name:"Advanced Diploma in Computer Application (ADCA)",cat:"Computer & IT",dur:"12 Months"},
+  {name:"Diploma in Computer Science & Engineering",cat:"Computer & IT",dur:"2 Years"},
+  {name:"Diploma in Hardware & Networking",cat:"Computer & IT",dur:"12 Months"},
+  {name:"Diploma in Web Designing & Development",cat:"Computer & IT",dur:"6 Months"},
+  {name:"Diploma in 3D Animation & Multimedia",cat:"Computer & IT",dur:"12 Months"},
+  {name:"Diploma in Desktop Publishing (DTP)",cat:"Computer & IT",dur:"3 Months"},
+  {name:"Diploma in Office Automation",cat:"Computer & IT",dur:"6 Months"},
+  {name:"Certificate in Computer Application (CCA)",cat:"Computer & IT",dur:"3 Months"},
+  {name:"Diploma in Tally with GST",cat:"Computer & IT",dur:"3 Months"},
+  {name:"Diploma in Digital Marketing",cat:"Computer & IT",dur:"6 Months"},
+  {name:"Diploma in Cyber Security",cat:"Computer & IT",dur:"6 Months"},
+  // Teacher Training
+  {name:"Diploma in Nursery Teacher Training (DNTT)",cat:"Teacher Training",dur:"1 Year"},
+  {name:"Diploma in Early Childhood Care & Education (DECC)",cat:"Teacher Training",dur:"1 Year"},
+  {name:"Diploma in Montessori Teacher Training",cat:"Teacher Training",dur:"1 Year"},
+  {name:"Diploma in School Management",cat:"Teacher Training",dur:"1 Year"},
+  {name:"Diploma in Yoga Teacher Training",cat:"Teacher Training",dur:"6 Months"},
+  {name:"Diploma in Physical Education",cat:"Teacher Training",dur:"1 Year"},
+  {name:"Diploma in Special Education (Mental Retardation)",cat:"Teacher Training",dur:"1 Year"},
+  {name:"Diploma in Special Education (Visual Impairment)",cat:"Teacher Training",dur:"1 Year"},
+  // Finance & Management
+  {name:"Diploma in Banking & Finance",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Financial Management",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Retail Management",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Wealth Management",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Trade Finance",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Business Administration",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Human Resource Management",cat:"Finance & Management",dur:"1 Year"},
+  {name:"Diploma in Marketing Management",cat:"Finance & Management",dur:"1 Year"},
+  // Engineering Trades
+  {name:"Diploma in Electrical Engineering",cat:"Engineering Trades",dur:"2 Years"},
+  {name:"Diploma in Electronics & Communication",cat:"Engineering Trades",dur:"2 Years"},
+  {name:"Diploma in Refrigeration & AC Technology",cat:"Engineering Trades",dur:"1 Year"},
+  {name:"Diploma in Mechanical Engineering",cat:"Engineering Trades",dur:"2 Years"},
+  {name:"Diploma in Civil Engineering (Draughtsman)",cat:"Engineering Trades",dur:"2 Years"},
+  {name:"Diploma in Automobile Engineering",cat:"Engineering Trades",dur:"1 Year"},
+  {name:"Certificate in Welder Trade",cat:"Engineering Trades",dur:"6 Months"},
+  {name:"Certificate in Fitter Trade",cat:"Engineering Trades",dur:"6 Months"},
+  {name:"Certificate in Electrician Trade",cat:"Engineering Trades",dur:"1 Year"},
+  // Non-Engineering Trades
+  {name:"Diploma in Fashion Designing",cat:"Non-Engineering Trades",dur:"1 Year"},
+  {name:"Diploma in Interior Designing",cat:"Non-Engineering Trades",dur:"1 Year"},
+  {name:"Diploma in Fine Arts",cat:"Non-Engineering Trades",dur:"1 Year"},
+  {name:"Diploma in Cutting & Tailoring",cat:"Non-Engineering Trades",dur:"1 Year"},
+  {name:"Diploma in Beauty Culture & Cosmetology",cat:"Non-Engineering Trades",dur:"6 Months"},
+  {name:"Diploma in Photography & Videography",cat:"Non-Engineering Trades",dur:"6 Months"},
+  {name:"Diploma in Floriculture & Landscape Design",cat:"Non-Engineering Trades",dur:"6 Months"},
+  {name:"Diploma in Hand Block Printing",cat:"Non-Engineering Trades",dur:"6 Months"},
+  // Health & Care
+  {name:"Diploma in Nanny Care",cat:"Health & Care",dur:"6 Months"},
+  {name:"Diploma in Live-in Caregiver",cat:"Health & Care",dur:"6 Months"},
+  {name:"Diploma in Child Nutrition",cat:"Health & Care",dur:"6 Months"},
+  {name:"Diploma in Community Health Worker",cat:"Health & Care",dur:"1 Year"},
+  {name:"Diploma in First Aid & Emergency Care",cat:"Health & Care",dur:"3 Months"},
+  // Typing
+  {name:"Certificate in Hindi Typing",cat:"Typing",dur:"3 Months"},
+  {name:"Certificate in English Typing",cat:"Typing",dur:"3 Months"},
+  {name:"Diploma in Stenography (Hindi)",cat:"Typing",dur:"1 Year"},
+  {name:"Diploma in Stenography (English)",cat:"Typing",dur:"1 Year"},
+  // Hospitality
+  {name:"Diploma in Food & Beverage Service",cat:"Hospitality",dur:"1 Year"},
+  {name:"Diploma in Front Office Management",cat:"Hospitality",dur:"1 Year"},
+  {name:"Certificate in Food Production (Cookery)",cat:"Hospitality",dur:"6 Months"},
+];
+
+function renderTable(data) {
+  const tbody = document.getElementById('courseBody');
+  tbody.innerHTML = '';
+  if (!data.length) { document.getElementById('noResults').style.display='block'; return; }
+  document.getElementById('noResults').style.display='none';
+  data.forEach((c,i) => {
+    tbody.innerHTML += `<tr>
+      <td style="color:var(--gray-400); font-weight:600;">${i+1}</td>
+      <td style="font-weight:600; color:var(--gray-800);">${c.name}</td>
+      <td><span style="background:var(--red-pale); color:var(--red-dark); padding:3px 10px; border-radius:50px; font-size:12px; font-weight:700;">${c.cat}</span></td>
+      <td style="color:var(--gray-600);">${c.dur}</td>
+      <td style="text-align:center;"><a href="inquiry.html" class="btn-primary" style="padding:7px 14px; font-size:12.5px;">Inquire <i class="fa fa-arrow-right"></i></a></td>
+    </tr>`;
+  });
+}
+
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const cat = document.getElementById('categoryFilter').value;
+  const filtered = courses.filter(c =>
+    c.name.toLowerCase().includes(q) &&
+    (cat === '' || c.cat === cat)
+  );
+  renderTable(filtered);
+}
+
+renderTable(courses);
+</script>
+</body>
+</html>

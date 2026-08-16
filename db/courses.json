@@ -1,0 +1,534 @@
+[
+  {
+    "category": "MGITM TEACHER TRAINING COURSES",
+    "name": "DIPLOMA IN SCHOOL OPERATION & MANAGEMENT",
+    "code": "DSOM",
+    "qual": "GRADUATION",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM TEACHER TRAINING COURSES",
+    "name": "DIPLOMA IN PHYSICAL EDUCATION TEACHER",
+    "code": "DPET",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM TEACHER TRAINING COURSES",
+    "name": "DIPLOMA IN YOGA TEACHER",
+    "code": "DYT",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM TEACHER TRAINING COURSES",
+    "name": "DIPLOMA IN ELEMENTARY EDUCATION",
+    "code": "DELED",
+    "qual": "XII",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM TEACHER TRAINING COURSES",
+    "name": "DIPLOMA IN NURSERY TEACHER TRAINING",
+    "code": "DNTT",
+    "qual": "XII",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM TEACHER TRAINING COURSES",
+    "name": "DIPLOMA IN EARLY CHILDHOOD CARE",
+    "code": "DECC",
+    "qual": "XII",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "DIPLOMA IN 3D ANIMATION",
+    "code": "D3DA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "DIPLOMA IN WEB DESIGNING",
+    "code": "DWD",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "COMPUTER TEACHER TRAINING",
+    "code": "DCTT",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "DIPLOMA IN FASHION DESIGNING",
+    "code": "DFD",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "DIPLOMA IN COMPUER APPLICATION",
+    "code": "DCA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "ADVANCE CERTIFICATE IN COMPUTER HARDWARE",
+    "code": "ACCH",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "ADVANCE CERTIFICATE IN INFORMATION TECHNOLOGY",
+    "code": "ACIT",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM DIPLOMA IN COMPUTER SCIENCE",
+    "name": "ADVANCE CERTIFICATE IN COMPUTER APPLICATION",
+    "code": "ACCA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "STEP WITH LATEST TECHNOLOGY",
+    "name": "ADVANCE DIPLOMA IN COMPUTER APPLICATION",
+    "code": "ADCA",
+    "qual": "GRADUATE",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN TRADE FINANCE",
+    "code": "DTF",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN HOME LOAN ADVISING",
+    "code": "DHLA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN DEBT RECOVERY AGENT",
+    "code": "DDRA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN ANTI MONEY LAUNDERTING",
+    "code": "DAML",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN BUSINESS CORRESPONDENT",
+    "code": "DBC",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN ACCOUNT AND BUSINESS EXECUTIVE",
+    "code": "DABE",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN CUSTOMER CARE EXECUTIVE",
+    "code": "DCCE",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN URBAN CO-OPERATIVE BANKING",
+    "code": "DUCB",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN INTERNATIONAL BANKING AND FINANCE",
+    "code": "DIBF",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN COMMODITY DERIVATIVES FOR BANKERS",
+    "code": "DCDB",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN INTERNATIONAL CO-OPERATIVE BANKING",
+    "code": "DICB",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN TREASURY, INVESTMENT AND RISK MANAGEMENT",
+    "code": "DTIRM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MGITM FINANCE AND INSURANCE SECTOR",
+    "name": "DIPLOMA IN INFORMATION TECHNICAL AND SYSTEM MANAGEMENT",
+    "code": "DITSM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN IT MANAGEMENT",
+    "code": "DIM",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN EVENT MANAGEMENT",
+    "code": "DEM",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN PROJECT MANAGEMENT",
+    "code": "DPM",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN BUSINESS MANAGEMENT",
+    "code": "DBM",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN INSURANCE MANAGEMENT",
+    "code": "DIM",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN MARKETING MANAGEMENT",
+    "code": "DMN",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN OPERATION MANAGEMENT",
+    "code": "DOM",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN CORPORATE COMMUNICATION",
+    "code": "DCC",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN FRONT OFFICE ADMINISTRATION",
+    "code": "DFOA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN DIGITAL MARKETING",
+    "code": "DDM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN RETAIL MANAGEMENT",
+    "code": "DRM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN WEALTH MANAGEMENT",
+    "code": "DWM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN TOURISM & HOSPITALITY",
+    "code": "DTH",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN OPERATING MANAGEMENT",
+    "code": "DOM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN MARKETING MANAGEMENT",
+    "code": "DMM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN SUPPLY CHAIN MANAGEMENT",
+    "code": "DSCM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN BUSINESS ADMINISATRATION",
+    "code": "DBA",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN HUMAN RESOURSES MANAGEMENT",
+    "code": "DHRM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN BANKING AND FINANCIAL MANAGEMENT",
+    "code": "DBFM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "MANAGEMENT COURSES",
+    "name": "DIPLOMA IN INFORMATION TECHNICAL AND SYSTEM MANAGEMENT",
+    "code": "DITSM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN FINE ARTS",
+    "code": "DFA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN OLD AGE CARE",
+    "code": "DOAC",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN FASHION DESIGNING",
+    "code": "DFD",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN INTERIOR DESIGNING",
+    "code": "DID",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN BEAUTY AND WELLNESS",
+    "code": "DBW",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN GARMENT TECHNOLOGY",
+    "code": "DGT",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN CULINARY ARTS (COOKERY)",
+    "code": "DCA",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN DOMESTIC HOUSE KEEPING",
+    "code": "DDHK",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN CORPORATE HOUSE KEEPING",
+    "code": "DCHK",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN BAKERS AND CONFECTIONER",
+    "code": "DBC",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN EMBROIDERY AND NEEDLE WORK",
+    "code": "DENW",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN MULTI PURPOSE HEALTH WORKER",
+    "code": "DMPHW",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN LIBRARY AND INFORMATON SCIENCE",
+    "code": "DLIS",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "NON ENGINERRING TRADES",
+    "name": "DIPLOMA IN FRUITS AND VEGETABLE PRESERVATION",
+    "code": "DFVP",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "TEACHING AND SOFTSKILLS",
+    "name": "DIPLOMA IN NANNY CARE",
+    "code": "DNC",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "TEACHING AND SOFTSKILLS",
+    "name": "DIPLOMA IN CHILD NUTRITION",
+    "code": "DCN",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "TEACHING AND SOFTSKILLS",
+    "name": "DIPLOMA IN LIVE IN CAREGIVER",
+    "code": "DLC",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "TEACHING AND SOFTSKILLS",
+    "name": "DIPLOMA IN SOFTSKILL TRAINNER",
+    "code": "DST",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "TEACHING AND SOFTSKILLS",
+    "name": "DIPLOMA IN EXAMINATION IN IT INDUSTRY",
+    "code": "DEII",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "DIPLOMA IN PLUMBING",
+    "code": "DP",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "DIPLOMA IN CARPENTER",
+    "code": "DC",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE - ELECTRICAL",
+    "code": "ITCELEC",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE - ELECTRONICS",
+    "code": "ITCELE",
+    "qual": "XII",
+    "duration": "1 YEAR"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE IN ELECTRICAL ENGINEERING",
+    "code": "ITCEE",
+    "qual": "XII",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE IN ELECTRONICS ENGINEERING",
+    "code": "ITCEE",
+    "qual": "XII",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE - MECHANIC (RADIO & TELEVISION)",
+    "code": "ITCMRT",
+    "qual": "XII",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE  - DRAUGHTSMAN (CIVIL)",
+    "code": "ITCDC",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  },
+  {
+    "category": "ENGINERRING TRADES",
+    "name": "INDUSTRIAL TRADE CERTIFICATE - DRAUGHTSMAN (MECHANICAL)",
+    "code": "ITCDM",
+    "qual": "GRADUATION",
+    "duration": "2 YEARS"
+  }
+]

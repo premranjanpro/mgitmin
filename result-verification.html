@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Result Verification — MGITM India | Verify Certificate Online</title>
+  <meta name="description" content="Instantly verify MGITM student results, certificates, and mark sheets online. Employers and students can authenticate MGITM credentials through our official result portal.">
+  <link rel="shortcut icon" href="images/glogo1.png">
+  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/modern-mgitm.css">
+</head>
+<body>
+<div id="loading"><div class="loader-ring"></div></div>
+<div class="top-strip"><div class="container-fluid"><div class="social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-youtube-play"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div><div class="email"><i class="fa fa-envelope"></i><a href="mailto:indiamgitm@gmail.com">indiamgitm@gmail.com</a></div></div></div>
+<header class="header-brand"><div class="container-fluid"><a href="index.html" class="logo"><img class="emblem" src="images/glogo1.png" alt="MGITM Emblem"><img class="title" src="images/glogo2.png" alt="MGITM"></a><div class="iso-badge hidden-xs"><i class="fa fa-certificate"></i><div><span>Quality Standard</span><strong>ISO 9001:2015 Certified</strong></div></div></div></header>
+<nav class="mgitm-nav"><div class="container-fluid"><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about-us.html">About Us</a></li><li><a href="director-message.html">Director Message</a></li><li><a href="courses.html">Courses</a></li><li class="active"><a href="result-verification.html">Result Verification</a></li><li><a href="branch-collaboration.html">Branch Collaboration</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="inquiry.html">Inquiry</a></li><li><a href="contact-us.html">Contact Us</a></li></ul><button class="nav-hamburger" id="navToggle"><i class="fa fa-bars"></i></button></div></nav>
+
+<div class="page-banner">
+  <h1>Student Result Verification</h1>
+  <p>Instant, 100% authentic online verification of MGITM student certificates &amp; mark sheets.</p>
+  <nav class="breadcrumb-nav"><a href="index.html">Home</a> <span>›</span> Result Verification</nav>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:40px; align-items:start;">
+      <!-- Info column -->
+      <div>
+        <span class="section-label">About This Portal</span>
+        <h2 style="font-size:26px; margin:8px 0 18px;">MGITM Online Result &amp; Certificate Verification</h2>
+        <p style="color:var(--gray-600); font-size:15px; line-height:1.8; margin-bottom:14px;">
+          MGITM provides a fully transparent online verification portal for all issued certificates, diplomas, and mark sheets. Employers, universities, and government departments can instantly authenticate the credentials of any MGITM-certified student.
+        </p>
+        <p style="color:var(--gray-600); font-size:15px; line-height:1.8; margin-bottom:25px;">
+          Simply enter the student's <strong>Roll / Registration Number</strong> to retrieve their academic record, including course name, examination session, marks obtained, and final result status.
+        </p>
+        <div class="why-item" style="margin-bottom:14px;">
+          <h4><i class="fa fa-lock"></i> Secure &amp; Official</h4>
+          <p>All records are maintained in our secure database and verified against official marksheets issued by MGITM examination board.</p>
+        </div>
+        <div class="why-item" style="margin-bottom:14px;">
+          <h4><i class="fa fa-clock-o"></i> 24×7 Availability</h4>
+          <p>The result portal is available round-the-clock, allowing instant verification at any time, from anywhere in India.</p>
+        </div>
+        <div class="why-item">
+          <h4><i class="fa fa-print"></i> Printable Statement</h4>
+          <p>Once verified, the academic record can be printed as an official document for submission to employers or universities.</p>
+        </div>
+      </div>
+
+      <!-- Search Form -->
+      <div class="result-card">
+        <div class="result-card-header">
+          <h3><i class="fa fa-search" style="margin-right:10px;"></i> Enter Student Details to Verify</h3>
+        </div>
+        <div class="result-card-body">
+          <div class="form-group">
+            <label for="regNo">Roll / Registration Number <span style="color:var(--red)">*</span></label>
+            <input type="text" id="regNo" class="form-control" placeholder="e.g. MGI/ME/11/1017" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="studentName">Student Name (Optional)</label>
+            <input type="text" id="studentName" class="form-control" placeholder="Full name for cross-verification">
+          </div>
+          <button class="btn-primary" style="width:100%; justify-content:center; padding:14px;" onclick="verifyResult()">
+            <i class="fa fa-search"></i> Verify Result Now
+          </button>
+          <p style="margin-top:12px; font-size:13px; color:var(--gray-400); text-align:center;">
+            Having trouble? Contact us at <a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Display Area -->
+    <div id="resultArea" style="display:none; margin-top:40px;">
+      <div style="border:2px solid var(--red); border-radius:var(--radius-lg); overflow:hidden;">
+        <div style="background:var(--red); color:#fff; padding:18px 24px; display:flex; align-items:center; gap:12px;">
+          <i class="fa fa-check-circle" style="font-size:22px;"></i>
+          <h3 style="color:#fff !important; font-size:18px; margin:0;">Result Found — Academic Statement</h3>
+        </div>
+        <div style="padding:28px; background:#fff;">
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px;">
+            <div style="background:var(--red-pale); border:1px solid var(--red-light); border-radius:var(--radius); padding:16px;">
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px;">Student Name</div>
+              <div id="resName" style="font-weight:700; color:var(--red-dark);"></div>
+            </div>
+            <div style="background:var(--red-pale); border:1px solid var(--red-light); border-radius:var(--radius); padding:16px;">
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px;">Roll Number</div>
+              <div id="resRoll" style="font-weight:700; color:var(--red-dark);"></div>
+            </div>
+            <div style="background:var(--red-pale); border:1px solid var(--red-light); border-radius:var(--radius); padding:16px;">
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px;">Course</div>
+              <div id="resCourse" style="font-weight:700; color:var(--red-dark);"></div>
+            </div>
+            <div style="background:var(--red-pale); border:1px solid var(--red-light); border-radius:var(--radius); padding:16px;">
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px;">Year / Session</div>
+              <div id="resSession" style="font-weight:700; color:var(--red-dark);"></div>
+            </div>
+            <div style="background:var(--red-pale); border:1px solid var(--red-light); border-radius:var(--radius); padding:16px;">
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px;">Marks</div>
+              <div id="resMarks" style="font-weight:700; color:var(--red-dark);"></div>
+            </div>
+            <div id="resStatusWrap" style="border-radius:var(--radius); padding:16px;">
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px;">Status</div>
+              <div id="resStatus" style="font-weight:800; font-size:16px;"></div>
+            </div>
+          </div>
+          <button onclick="window.print()" class="btn-primary" style="gap:8px;">
+            <i class="fa fa-print"></i> Print Academic Statement
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="notFoundArea" style="display:none; margin-top:40px; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:40px; text-align:center;">
+      <i class="fa fa-exclamation-triangle" style="font-size:40px; color:var(--gray-400); margin-bottom:16px; display:block;"></i>
+      <h3 style="color:var(--gray-800) !important; font-size:20px; margin:0 0 10px;">No Record Found</h3>
+      <p style="color:var(--gray-600);">No result found for this Roll Number. Please check the number and try again, or contact us at <a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>Want to Enroll in an MGITM Course?</h2>
+  <p>Join 800+ centers nationwide. Explore 75+ skill programs and apply with our flexible Open Session System.</p>
+  <a href="courses.html" class="btn-white">Browse Courses <i class="fa fa-arrow-right"></i></a>
+</section>
+
+<footer class="site-footer"><div class="footer-inner"><div><h4>About MGITM</h4><p>ISO 9001:2015 certified institute. Delhi NCR, India.</p><p style="margin-top:12px;"><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div><div><h4>Quick Links</h4><ul><li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li><li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li><li><a href="courses.html"><i class="fa fa-angle-right"></i> Courses</a></li><li><a href="result-verification.html"><i class="fa fa-angle-right"></i> Result Verification</a></li><li><a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a></li></ul></div><div><h4>Official Desk</h4><p>Corporate Office: Delhi NCR, India</p><p><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div></div><div class="footer-bottom">© 2026 MGITM India. All Rights Reserved.</div></footer>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').style.display='none';},400);});
+document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+
+// Sample data for demo
+const resultDB = {
+  "MGI/ME/11/1017": {name:"Amit Kumar Sharma", roll:"MGI/ME/11/1017", course:"DCA - Diploma in Computer Application", session:"2024-25", marks:"425/500 (85%)", status:"PASS"},
+  "MGI/DCA/22/0045": {name:"Priya Mishra", roll:"MGI/DCA/22/0045", course:"ADCA - Advanced Diploma in Computer Application", session:"2024-25", marks:"463/500 (92.6%)", status:"PASS"},
+  "MGI/NTT/18/0112": {name:"Sunita Devi", roll:"MGI/NTT/18/0112", course:"DNTT - Diploma in Nursery Teacher Training", session:"2023-24", marks:"410/500 (82%)", status:"PASS"},
+};
+
+function verifyResult() {
+  const roll = document.getElementById('regNo').value.trim();
+  document.getElementById('resultArea').style.display = 'none';
+  document.getElementById('notFoundArea').style.display = 'none';
+  if (!roll) { alert('Please enter a Roll/Registration Number'); return; }
+  const rec = resultDB[roll.toUpperCase()] || resultDB[roll];
+  if (rec) {
+    document.getElementById('resName').textContent = rec.name;
+    document.getElementById('resRoll').textContent = rec.roll;
+    document.getElementById('resCourse').textContent = rec.course;
+    document.getElementById('resSession').textContent = rec.session;
+    document.getElementById('resMarks').textContent = rec.marks;
+    const statusEl = document.getElementById('resStatus');
+    const wrapEl = document.getElementById('resStatusWrap');
+    statusEl.textContent = rec.status;
+    statusEl.style.color = rec.status === 'PASS' ? 'green' : 'var(--red)';
+    wrapEl.style.background = rec.status === 'PASS' ? '#f0fdf4' : 'var(--red-pale)';
+    wrapEl.style.border = rec.status === 'PASS' ? '1px solid #bbf7d0' : '1px solid var(--red-light)';
+    document.getElementById('resultArea').style.display = 'block';
+  } else {
+    document.getElementById('notFoundArea').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
