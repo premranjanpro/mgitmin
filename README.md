@@ -1,79 +1,105 @@
 # 🎓 Mahatma Gandhi Institute of Technology & Management (MGITM)
 
-Welcome to the official static website repository for **Mahatma Gandhi Institute of Technology & Management (MGITM)** (`www.mgitm.in`).
+[![Website Status](https://img.shields.io/badge/Status-Live-success?style=flat-square)](https://www.mgitm.in)
+[![ISO Standard](https://img.shields.io/badge/ISO-9001%3A2015_Certified-blue?style=flat-square)](about-us.html)
+[![Verification Engine](https://img.shields.io/badge/Verification-24x7_Online-orange?style=flat-square)](verify.html)
+[![License](https://img.shields.io/badge/License-All_Rights_Reserved-red?style=flat-square)](about-us.html)
 
-MGITM is an **ISO 9001:2015 Certified Institute** governed from the capital of India, dedicated to providing career-oriented Technical, Vocational, IT, Management, and Teacher Training courses across an expansive pan-India network.
+Official web portal and digital examination verification system for **Mahatma Gandhi Institute of Technology & Management (MGITM)** (`www.mgitm.in`).
 
----
-
-## 🚀 Key Project Highlights
-
-- **Aesthetics & UI/UX**: Premium modern glassmorphism design system using HSL-tailored colors, Google Fonts (`Outfit` & `Plus Jakarta Sans`), subtle micro-animations, and responsive cards.
-- **Privacy & Security**: Zero public exposure of internal personal contacts; official communication desk strictly routes through `indiamgitm@gmail.com`.
-- **Form Processing**: Web3Forms backend integration for Contact, Course Inquiry, and Branch Collaboration forms with seamless redirection to `thank-you.html`.
-- **Content Integration**: 100% data extraction and presentation from `plan_content/` documents:
-  - `MGITM COURSE LIST.xlsx`: 76 accredited diploma and certificate programs.
-  - `ABOUT US MGITM (1).docx`: ISO credentials, 800+ learning centers mission, Vision, and Values.
-  - `FAQ FOR MGITM (1).docx`: Q&A covering Open Session System (OSS), Supreme Court degree guidelines, and self-employment.
-  - `FOUNDER MESSAGE FOR MGITM (1).docx`: Message from the Desk of Chairman / Director.
-  - `APPLICATION FOR COLLABORATION (1).docx`: Franchise & branch partnership application structure.
-- **Verification Engine**: Interactive student result lookup system (`db/results.json`) with print-ready marksheet statements.
+MGITM is an autonomous educational institution governed from the capital of India (Delhi NCR), dedicated to providing job-ready Technical, Vocational, IT, Management, and Teacher Training certifications across a nationwide network of 800+ learning centers.
 
 ---
 
-## 📁 Repository & Asset Structure
+## 🌟 Core Highlights & Systems
+
+### 1. 📜 Marksheet & Academic Statement Portal (`result.html`)
+- **Instant Search**: Search records using Student Registration Number (e.g., `MGI/ACCA/08/1050`, `MGI/ELEC24-267145293`) or Roll Number (e.g., `ELEC2426342335`, `EE21244567291`).
+- **URL Parameter Direct Access**: Auto-loads records with `?regno=...` or `?roll=...` queries.
+- **Official Academic Statement**:
+  - Full candidate particulars & examination session metadata.
+  - Multi-year transcript breakdown with marks obtained, maximum marks, aggregate percentage, and final division.
+  - Live dynamic verification QR Code.
+  - Official Controller of Examinations authorization stamp & digital signatures.
+- **Single-Page A4 Print Engine**: Dedicated `@media print` styling formats the complete marksheet onto a single A4 page with all website navigation and chrome hidden.
+
+### 2. 🛡️ Online Credential Verification Portal (`verify.html`)
+- **Institutional Verification**: Enables employers, universities, and government bodies to authenticate student certificates in real-time.
+- **Digital Security Features**: Unique verification reference ID, digital security shield badge, ISO 9001:2015 authentication seal, and scanned verification routing.
+- **One-Click Certificate Print**: Clean, printable verification report formatted for official submission.
+
+### 3. 📚 Searchable Course Catalog (`courses.html`)
+- Comprehensive directory of **75+ accredited diploma & certificate courses** across 6 key disciplines:
+  - Computer Science & IT (DCA, ADCA, Web Designing, Hardware & Networking, etc.)
+  - Teacher Training (DNTT, DELED, Physical Education, Yoga Teacher Training)
+  - Industrial Trades (Electrician, Electronics, Mechanical, Civil, Electrical)
+  - Finance, Management & Commercial Applications
+  - Health Care, Hospitality & Creative Arts
+- Real-time instant search by title and domain filter dropdown.
+
+### 4. 🤝 Branch Collaboration & Open Session System (`branch-collaboration.html`)
+- Application portal for new center affiliations and institutional partnerships.
+- Information on the Supreme Court approved **Open Session System (OSS)** for simultaneous skill certifications.
+
+---
+
+## 📁 Repository Structure
 
 ```
 mgitmin/
-├── index.html                      # Homepage (Hero Banner, Quick Stats, Result Lookup Widget)
-├── about-us.html                   # About MGITM (Vision, Mission, Values, ISO Credentials)
-├── director-message.html           # Director & Chairman Message
-├── courses.html                    # Interactive 76-Course Directory & Search Filter
-├── result-verification.html        # Online Student Result Verification Portal & Marksheet Print
-├── branch-collaboration.html       # Franchise & Center Partnership Application Form
-├── faqs.html                       # Comprehensive FAQ Accordion Portal
-├── inquiry.html                    # General Course Admission Inquiry Form
-├── contact-us.html                 # Contact Us, Corporate Office, & Map
+├── index.html                      # Home Portal (Hero, Key Stats, Quick Verification Widget)
+├── about-us.html                   # Institutional Profile, Vision, Mission, ISO Standards
+├── director-message.html           # Message from the Desk of Director
+├── courses.html                    # 75+ Course Directory with Live Filtering
+├── result.html                     # Official Marksheet Portal (Single-Page A4 Print Optimized)
+├── verify.html                     # Online Certificate & Credential Verification Portal
+├── result-verification.html        # Academic Verification Hub
+├── branch-collaboration.html       # Center Affiliation & Franchise Application
+├── how-to-get-affiliations.html    # Step-by-Step Affiliation Guidelines
+├── faqs.html                       # Comprehensive Student & Partner FAQ Accordion
+├── inquiry.html                    # Student Admission Inquiry Form
+├── contact-us.html                 # Official Desk & Corporate Office Information
 ├── thank-you.html                  # Form Submission Success Screen
 ├── css/
-│   ├── modern-mgitm.css            # Primary Modern Design System & Utilities
-│   ├── custom.css                  # Core CSS Layout Rules
-│   └── reset.css                   # HTML5 Browser Reset
-├── js/
-│   ├── jquery.min.js               # jQuery Framework
-│   └── custom.js                   # Navigation & UI Interaction Scripts
+│   └── modern-mgitm.css            # Unified Design System, Typography & Print Stylesheets
 ├── db/
-│   ├── courses.json                # JSON Dataset of 76 Accredited Courses
-│   └── results.json                # JSON Dataset for Student Result Verification
-├── plan_content/                   # Original Document Specifications (.docx & .xlsx)
-├── sitemap.xml                     # Search Engine Sitemap Indexing File
-└── robots.txt                      # Web Crawler Rules
+│   ├── courses.json                # Course Catalog Database
+│   └── results.json                # Student Academic & Examination Records Database
+├── images/                         # Institutional Emblems, Logos & Visual Assets
+└── plan_content/                   # Source Curriculum & Institutional Documentation
 ```
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Technology | Usage |
+| Layer | Technologies Used |
 | :--- | :--- |
-| **HTML5** | Semantic, SEO-optimized page markup |
-| **CSS3** | Custom CSS variables, Flexbox/Grid, Glassmorphism card effects |
-| **JavaScript (ES6)** | Dynamic course filtering, result lookup engine, UI toggles |
-| **Bootstrap 3.3** | Grid layout foundation & modal responsive drawers |
-| **Font Awesome & Iconmoon** | Crisp vector iconography |
-| **Web3Forms API** | Serverless form submission handling |
+| **Structure** | Semantic HTML5, SEO OpenGraph meta tags, responsive viewport |
+| **Styling** | Vanilla CSS3 (Custom Tokens, CSS Grid, Flexbox, Micro-animations, `@media print`) |
+| **Data & Logic** | Modern JavaScript (ES6+), JSON Databases (`db/results.json`, `db/courses.json`) |
+| **Typography** | Plus Jakarta Sans & Playfair Display (Google Fonts) |
+| **Icons & Media** | Font Awesome CDN, Official MGITM Emblems |
+| **Form Processing**| Serverless Form Handler API (Web3Forms) |
 
 ---
 
-## 📋 5-Day Implementation Roadmap
+## 🖨️ Single-Page Print Optimization
 
-1. **Day 1**: Design System & Utilities (`css/modern-mgitm.css`), Color Tokens, Typography, and Horizontal Navbar.
-2. **Day 2**: Homepage (`index.html`) & Director Message (`director-message.html`) with leadership quote card.
-3. **Day 3**: Searchable Course Catalog (`courses.html`) & Printable Result Verification (`result-verification.html`).
-4. **Day 4**: About Us (`about-us.html`) & Interactive FAQ Accordion (`faqs.html`).
-5. **Day 5**: Web3Forms integration (`inquiry.html`, `contact-us.html`, `branch-collaboration.html`, `thank-you.html`) and final quality audit.
+Both `result.html` and `verify.html` are configured with dedicated `@media print` rules:
+- Paper format: **A4 Portrait** (`margin: 8mm`).
+- Hides headers, navigation strips, search bars, action buttons, and footers automatically during print.
+- Preserves high-contrast borders, background tints (`-webkit-print-color-adjust: exact`), and prevents multi-page overflow.
 
 ---
 
-## 🔒 License & Usage
+## 📬 Official Desk & Contact
+
+- **Institution**: Mahatma Gandhi Institute of Technology & Management (MGITM)
+- **Corporate Office**: Delhi NCR, India
+- **Official Inquiries**: `indiamgitm@gmail.com`
+- **Website**: [www.mgitm.in](https://www.mgitm.in)
+
+---
+
 Copyright © 2026 Mahatma Gandhi Institute of Technology & Management (MGITM). All Rights Reserved.
