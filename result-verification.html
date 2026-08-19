@@ -6,14 +6,14 @@
   <title>Student Result Verification — MGITM India | Verify Certificate Online</title>
   <meta name="description" content="Instantly verify MGITM student results, certificates, and mark sheets online. Employers and students can authenticate MGITM credentials through our official result portal.">
   <link rel="shortcut icon" href="images/glogo1.png">
-  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/modern-mgitm.css">
 </head>
 <body>
 <div id="loading"><div class="loader-ring"></div></div>
 <div class="top-strip"><div class="container-fluid"><div class="social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-youtube-play"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div><div class="email"><i class="fa fa-envelope"></i><a href="mailto:indiamgitm@gmail.com">indiamgitm@gmail.com</a></div></div></div>
 <header class="header-brand"><div class="container-fluid"><a href="index.html" class="logo"><img class="emblem" src="images/glogo1.png" alt="MGITM Emblem"><img class="title" src="images/glogo2.png" alt="MGITM"></a><div class="iso-badge hidden-xs"><i class="fa fa-certificate"></i><div><span>Quality Standard</span><strong>ISO 9001:2015 Certified</strong></div></div></div></header>
-<nav class="mgitm-nav"><div class="container-fluid"><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about-us.html">About Us</a></li><li><a href="director-message.html">Director Message</a></li><li><a href="courses.html">Courses</a></li><li class="active"><a href="result-verification.html">Result Verification</a></li><li><a href="branch-collaboration.html">Branch Collaboration</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="inquiry.html">Inquiry</a></li><li><a href="contact-us.html">Contact Us</a></li></ul><button class="nav-hamburger" id="navToggle"><i class="fa fa-bars"></i></button></div></nav>
+<nav class="mgitm-nav"><div class="container-fluid"><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about-us.html">About Us</a></li><li><a href="director-message.html">Director Message</a></li><li><a href="courses.html">Courses</a></li><li><a href="result.html">Result</a></li><li><a href="verify.html">Verify Certificate</a></li><li><a href="branch-collaboration.html">Branch Collaboration</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="contact-us.html">Contact Us</a></li></ul><button class="nav-hamburger" id="navToggle"><i class="fa fa-bars"></i></button></div></nav>
 
 <div class="page-banner">
   <h1>Student Result Verification</h1>
@@ -127,37 +127,59 @@
   <a href="courses.html" class="btn-white">Browse Courses <i class="fa fa-arrow-right"></i></a>
 </section>
 
-<footer class="site-footer"><div class="footer-inner"><div><h4>About MGITM</h4><p>ISO 9001:2015 certified institute. Delhi NCR, India.</p><p style="margin-top:12px;"><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div><div><h4>Quick Links</h4><ul><li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li><li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li><li><a href="courses.html"><i class="fa fa-angle-right"></i> Courses</a></li><li><a href="result-verification.html"><i class="fa fa-angle-right"></i> Result Verification</a></li><li><a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a></li></ul></div><div><h4>Official Desk</h4><p>Corporate Office: Delhi NCR, India</p><p><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div></div><div class="footer-bottom">© 2026 MGITM India. All Rights Reserved.</div></footer>
+<footer class="site-footer"><div class="footer-inner"><div><h4>About MGITM</h4><p>ISO 9001:2015 certified institute. Delhi NCR, India.</p><p style="margin-top:12px;"><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div><div><h4>Quick Links</h4><ul><li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li><li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li><li><a href="courses.html"><i class="fa fa-angle-right"></i> Courses</a></li><li><a href="result.html"><i class="fa fa-angle-right"></i> Result Portal</a></li><li><a href="verify.html"><i class="fa fa-angle-right"></i> Verify Certificate</a></li><li><a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a></li></ul></div><div><h4>Official Desk</h4><p>Corporate Office: Delhi NCR, India</p><p><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p></div></div><div class="footer-bottom">© 2026 MGITM India. All Rights Reserved.</div></footer>
 
 <script>
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').style.display='none';},400);});
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
 
-// Sample data for demo
-const resultDB = {
-  "MGI/ME/11/1017": {name:"Amit Kumar Sharma", roll:"MGI/ME/11/1017", course:"DCA - Diploma in Computer Application", session:"2024-25", marks:"425/500 (85%)", status:"PASS"},
-  "MGI/DCA/22/0045": {name:"Priya Mishra", roll:"MGI/DCA/22/0045", course:"ADCA - Advanced Diploma in Computer Application", session:"2024-25", marks:"463/500 (92.6%)", status:"PASS"},
-  "MGI/NTT/18/0112": {name:"Sunita Devi", roll:"MGI/NTT/18/0112", course:"DNTT - Diploma in Nursery Teacher Training", session:"2023-24", marks:"410/500 (82%)", status:"PASS"},
-};
+const FALLBACK_DB = [
+  { "REGNO": "MGI/ME/11/1017", "ROLLNO": "ME111017", "NAME": "RAHUL KUMAR", "COURSENAME": "DIPLOMA IN MECHANICAL ENGINEERING", "ISSUEDATE": "15 Jul 2021", "Total": "2340/3000", "Percentage": "78.00%", "Status": "PASS" },
+  { "REGNO": "MGI/ACCA/08/1050", "ROLLNO": "ACCA081050", "NAME": "AMIT SHARMA", "COURSENAME": "CERTIFICATE IN ACCOUNTING", "ISSUEDATE": "10 Aug 2022", "Total": "420/500", "Percentage": "84.00%", "Status": "PASS" },
+  { "REGNO": "MGI/HM/17/1013", "ROLLNO": "HM171013", "NAME": "VIKAS VERMA", "COURSENAME": "DIPLOMA IN HOTEL MANAGEMENT", "ISSUEDATE": "05 Sep 2020", "Total": "1390/1800", "Percentage": "77.22%", "Status": "PASS" },
+  { "REGNO": "MGI/ELEC24-267145293", "ROLLNO": "ELEC2426342335", "NAME": "NISHANT SAINI", "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRICIAN", "ISSUEDATE": "05/08/2026", "Total": "1590/2000", "Percentage": "79.50%", "Status": "PASS" },
+  { "REGNO": "MGI/ELEC24-267145292", "ROLLNO": "ELEC2426342334", "NAME": "MOHIT KUMAR", "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRICIAN", "ISSUEDATE": "05/08/2026", "Total": "1545/2000", "Percentage": "77.25%", "Status": "PASS" },
+  { "REGNO": "MGI/ELE22-247145240", "ROLLNO": "ELE2224342319", "NAME": "RAJ SHARMA", "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRONICS", "ISSUEDATE": "28/08/2024", "Total": "1570/2000", "Percentage": "78.50%", "Status": "PASS" },
+  { "REGNO": "MGI/EE/21-24377518", "ROLLNO": "EE21244567291", "NAME": "HEMANT", "COURSENAME": "DIPLOMA IN ELECTRICAL ENGINEERING", "ISSUEDATE": "09/08/2024", "Total": "2385/3000", "Percentage": "79.50%", "Status": "PASS" }
+];
+
+let resultDB = FALLBACK_DB;
+fetch('db/results.json').then(r=>r.json()).then(d=>{if(Array.isArray(d)&&d.length>0) resultDB=d;}).catch(()=>{});
+
+function cleanStr(s){return s?String(s).toUpperCase().replace(/[\s\-\/\_\.\:]/g,''):'';}
 
 function verifyResult() {
   const roll = document.getElementById('regNo').value.trim();
   document.getElementById('resultArea').style.display = 'none';
   document.getElementById('notFoundArea').style.display = 'none';
   if (!roll) { alert('Please enter a Roll/Registration Number'); return; }
-  const rec = resultDB[roll.toUpperCase()] || resultDB[roll];
+  
+  const cleanQ = cleanStr(roll);
+  const rec = resultDB.find(item => cleanStr(item.REGNO) === cleanQ || cleanStr(item.ROLLNO) === cleanQ || cleanStr(item.ENROLLMENTNO) === cleanQ);
+
   if (rec) {
-    document.getElementById('resName').textContent = rec.name;
-    document.getElementById('resRoll').textContent = rec.roll;
-    document.getElementById('resCourse').textContent = rec.course;
-    document.getElementById('resSession').textContent = rec.session;
-    document.getElementById('resMarks').textContent = rec.marks;
+    document.getElementById('resName').textContent = rec.NAME || rec.name;
+    document.getElementById('resRoll').textContent = rec.ROLLNO || rec.roll || rec.REGNO;
+    document.getElementById('resCourse').textContent = rec.COURSENAME || rec.course;
+    document.getElementById('resSession').textContent = rec.ISSUEDATE || rec.session || '2024-26';
+    document.getElementById('resMarks').textContent = (rec.Total || rec.marks) + (rec.Percentage ? ` (${rec.Percentage})` : '');
     const statusEl = document.getElementById('resStatus');
     const wrapEl = document.getElementById('resStatusWrap');
-    statusEl.textContent = rec.status;
-    statusEl.style.color = rec.status === 'PASS' ? 'green' : 'var(--red)';
-    wrapEl.style.background = rec.status === 'PASS' ? '#f0fdf4' : 'var(--red-pale)';
-    wrapEl.style.border = rec.status === 'PASS' ? '1px solid #bbf7d0' : '1px solid var(--red-light)';
+    const isPass = (rec.Status || rec.status || 'PASS').toUpperCase() === 'PASS' || (rec.Status || '').toUpperCase() === 'PASSED';
+    statusEl.textContent = isPass ? 'PASSED' : 'FAILED';
+    statusEl.style.color = isPass ? 'green' : 'var(--red)';
+    wrapEl.style.background = isPass ? '#f0fdf4' : 'var(--red-pale)';
+    wrapEl.style.border = isPass ? '1px solid #bbf7d0' : '1px solid var(--red-light)';
+    
+    // Auto redirect link to new attractive result.html
+    const actBtns = document.getElementById('resultArea').querySelector('.btn-primary');
+    if (actBtns) {
+      actBtns.onclick = function() {
+        window.location.href = `result.html?regno=${encodeURIComponent(rec.REGNO || rec.ROLLNO)}`;
+      };
+      actBtns.innerHTML = '<i class="fa fa-print"></i> View &amp; Print Full Single Page Marksheet';
+    }
+    
     document.getElementById('resultArea').style.display = 'block';
   } else {
     document.getElementById('notFoundArea').style.display = 'block';

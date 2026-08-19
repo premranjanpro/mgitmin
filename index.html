@@ -7,7 +7,7 @@
   <meta name="description" content="Mahatma Gandhi Institute of Technology & Management (MGITM) is India's premier ISO 9001:2015 certified technical & vocational education institute. 75+ diploma & certificate courses, 800+ centers nationwide.">
   <meta name="keywords" content="MGITM India, vocational education India, computer diploma institute, teacher training diploma, DCA ADCA DNTT, technical education India, ISO certified institute">
   <link rel="shortcut icon" href="images/glogo1.png">
-  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/modern-mgitm.css">
 </head>
 <body>
@@ -56,10 +56,10 @@
       <li><a href="about-us.html">About Us</a></li>
       <li><a href="director-message.html">Director Message</a></li>
       <li><a href="courses.html">Courses</a></li>
-      <li><a href="result-verification.html">Result Verification</a></li>
+      <li><a href="result.html">Result</a></li>
+      <li><a href="verify.html">Verify Certificate</a></li>
       <li><a href="branch-collaboration.html">Branch Collaboration</a></li>
       <li><a href="faqs.html">FAQs</a></li>
-      <li><a href="inquiry.html">Inquiry</a></li>
       <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
     <button class="nav-hamburger" id="navToggle" aria-label="Toggle Menu">
@@ -112,7 +112,7 @@
             <div class="lbl">Skill Courses</div>
           </div>
           <div class="hero-stat">
-            <a href="result-verification.html" class="btn-primary" style="padding:10px 16px; font-size:13px;">
+            <a href="result.html" class="btn-primary" style="padding:10px 16px; font-size:13px;">
               Verify Result <i class="fa fa-search"></i>
             </a>
           </div>
@@ -176,7 +176,7 @@
           Verify Result Online <i class="fa fa-arrow-right"></i>
         </button>
         <p style="margin-top:12px; font-size:13px; color:var(--gray-400); text-align:center;">
-          Need full verification portal? <a href="result-verification.html" style="color:var(--red); font-weight:600;">Click here</a>
+          Direct links: <a href="result.html" style="color:var(--red); font-weight:600;">Marksheet Portal</a> &bull; <a href="verify.html" style="color:var(--red); font-weight:600;">Certificate Verification</a>
         </p>
       </div>
     </div>
@@ -299,7 +299,8 @@
         <li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li>
         <li><a href="director-message.html"><i class="fa fa-angle-right"></i> Director Message</a></li>
         <li><a href="courses.html"><i class="fa fa-angle-right"></i> Course Catalog</a></li>
-        <li><a href="result-verification.html"><i class="fa fa-angle-right"></i> Result Verification</a></li>
+        <li><a href="result.html"><i class="fa fa-angle-right"></i> Result Marksheet</a></li>
+        <li><a href="verify.html"><i class="fa fa-angle-right"></i> Certificate Verification</a></li>
         <li><a href="branch-collaboration.html"><i class="fa fa-angle-right"></i> Branch Collaboration</a></li>
         <li><a href="faqs.html"><i class="fa fa-angle-right"></i> FAQs</a></li>
         <li><a href="inquiry.html"><i class="fa fa-angle-right"></i> Inquiry</a></li>
@@ -341,7 +342,7 @@ document.getElementById('navToggle').addEventListener('click', function() {
 function quickSearch() {
   const val = document.getElementById('rollNo').value.trim();
   if (!val) { alert('Please enter a valid Roll / Registration Number'); return; }
-  window.location.href = 'result-verification.html';
+  window.location.href = `result.html?regno=${encodeURIComponent(val)}`;
 }
 </script>
 

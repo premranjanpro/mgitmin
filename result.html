@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Marksheet &amp; Result Portal — MGITM India</title>
+  <meta name="description" content="Search, view, and print official student examination results, marksheets, and academic statements issued by Mahatma Gandhi Institute of Technology &amp; Management (MGITM).">
+  <link rel="shortcut icon" href="images/glogo1.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/modern-mgitm.css">
+  <style>
+    /* ─── RESULT / MARKSHEET SPECIFIC STYLES ─── */
+    .search-panel {
+      background: linear-gradient(135deg, #ffffff 0%, #fdf2f8 100%);
+      border: 1px solid var(--red-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(194, 24, 91, 0.08);
+      max-width: 800px;
+      margin: 0 auto 35px;
+    }
+    .search-box-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .search-box-row input {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 2px solid var(--gray-200);
+      border-radius: 8px;
+      color: var(--gray-800);
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+    .search-box-row input:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 4px rgba(194, 24, 91, 0.12);
+    }
+    .sample-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--gray-600);
+    }
+    .sample-chip {
+      background: #fff;
+      border: 1px solid var(--red-light);
+      color: var(--red-dark);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sample-chip:hover {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+      transform: translateY(-1px);
+    }
+
+    /* ─── MARKSHEET CARD (A4 Single Page Optimized) ─── */
+    .marksheet-outer {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .marksheet-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .marksheet-card {
+      background: #ffffff;
+      border: 3px double #880e4f;
+      outline: 1px solid #c2185b;
+      outline-offset: -8px;
+      border-radius: 6px;
+      padding: 30px 36px;
+      position: relative;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      background-image: radial-gradient(#fdf2f8 1px, transparent 1px);
+      background-size: 20px 20px;
+      overflow: hidden;
+    }
+    .marksheet-card::before {
+      content: "MGITM";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 110px;
+      font-weight: 900;
+      color: rgba(194, 24, 91, 0.035);
+      letter-spacing: 12px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .marksheet-header {
+      text-align: center;
+      border-bottom: 2px solid #880e4f;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .marksheet-top-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .marksheet-top-brand img.logo-img {
+      height: 62px;
+      object-fit: contain;
+    }
+    .marksheet-top-brand .inst-name {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 800;
+      color: #880e4f;
+      margin: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .marksheet-subhead {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-600);
+      margin: 2px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .marksheet-doc-badge {
+      display: inline-block;
+      background: #880e4f;
+      color: #ffffff;
+      padding: 5px 22px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+      box-shadow: 0 2px 6px rgba(136, 14, 79, 0.2);
+    }
+    .marksheet-meta-strip {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-600);
+      margin: 10px 0 16px;
+      border-bottom: 1px dashed var(--gray-200);
+      padding-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .marksheet-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+      row-gap: 8px;
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted #f0f0f0;
+      padding: 4px 0;
+    }
+    .detail-lbl {
+      color: var(--gray-600);
+      font-weight: 600;
+    }
+    .detail-val {
+      font-weight: 800;
+      color: var(--gray-800);
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .marks-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 18px;
+      font-size: 13px;
+      position: relative;
+      z-index: 1;
+    }
+    .marks-table th {
+      background: #880e4f;
+      color: #ffffff;
+      padding: 9px 12px;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid #880e4f;
+      text-align: center;
+    }
+    .marks-table td {
+      padding: 8px 12px;
+      border: 1px solid #d4d4d8;
+      text-align: center;
+      font-weight: 600;
+      color: #27272a;
+    }
+    .marks-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+    .marks-table tfoot td {
+      background: #fdf2f8 !important;
+      font-weight: 800;
+      color: #880e4f;
+      border-top: 2px solid #880e4f;
+      font-size: 13.5px;
+    }
+    .status-badge-pass {
+      display: inline-block;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 3px 12px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    .marksheet-footer {
+      display: grid;
+      grid-template-columns: 140px 1fr 140px;
+      gap: 16px;
+      align-items: center;
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-200);
+      position: relative;
+      z-index: 1;
+    }
+    .qr-area {
+      text-align: center;
+    }
+    .qr-area img {
+      width: 90px;
+      height: 90px;
+      border: 1px solid #e4e4e7;
+      padding: 3px;
+      background: #fff;
+      border-radius: 4px;
+    }
+    .qr-caption {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--gray-600);
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+    .security-statement {
+      text-align: center;
+      font-size: 11px;
+      color: var(--gray-600);
+      line-height: 1.4;
+      padding: 0 10px;
+    }
+    .iso-seal-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fdf2f8;
+      border: 1px solid var(--red-light);
+      padding: 3px 8px;
+      border-radius: 12px;
+      color: var(--red-dark);
+      font-weight: 800;
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+    .sign-area {
+      text-align: center;
+    }
+    .sign-graphic {
+      font-family: 'Playfair Display', cursive, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: #1e3a8a;
+      line-height: 1;
+      margin-bottom: 2px;
+      letter-spacing: 1px;
+    }
+    .sign-line {
+      width: 110px;
+      height: 1px;
+      background: #71717a;
+      margin: 4px auto;
+    }
+    .sign-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #27272a;
+      text-transform: uppercase;
+    }
+
+    /* ─── PRINT OPTIMIZATION (SINGLE A4 PAGE) ─── */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+      body * {
+        visibility: hidden;
+      }
+      #marksheetContainer, #marksheetContainer * {
+        visibility: visible;
+      }
+      #marksheetContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .top-strip,
+      .header-brand,
+      .mgitm-nav,
+      .page-banner,
+      .search-panel,
+      .marksheet-actions,
+      .cta-banner,
+      .site-footer,
+      #loading {
+        display: none !important;
+      }
+      .marksheet-card {
+        box-shadow: none !important;
+        border: 2.5px double #880e4f !important;
+        outline: 1px solid #c2185b !important;
+        padding: 18px 24px !important;
+        margin: 0 !important;
+        page-break-inside: avoid !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .marksheet-header {
+        padding-bottom: 8px !important;
+        margin-bottom: 12px !important;
+      }
+      .marksheet-top-brand img.logo-img {
+        height: 50px !important;
+      }
+      .marksheet-top-brand .inst-name {
+        font-size: 19px !important;
+      }
+      .marksheet-doc-badge {
+        padding: 3px 16px !important;
+        font-size: 12px !important;
+      }
+      .marksheet-details-grid {
+        padding: 10px 14px !important;
+        margin-bottom: 12px !important;
+        font-size: 11.5px !important;
+        row-gap: 4px !important;
+      }
+      .marks-table {
+        margin-bottom: 12px !important;
+        font-size: 11.5px !important;
+      }
+      .marks-table th {
+        padding: 6px 8px !important;
+        font-size: 10.5px !important;
+        background: #880e4f !important;
+        color: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+      }
+      .marks-table td {
+        padding: 5px 8px !important;
+      }
+      .marksheet-footer {
+        margin-top: 14px !important;
+        padding-top: 10px !important;
+      }
+      .qr-area img {
+        width: 75px !important;
+        height: 75px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="loading"><div class="loader-ring"></div></div>
+
+<!-- ═══ TOP STRIP ═══ -->
+<div class="top-strip">
+  <div class="container-fluid">
+    <div class="social">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-youtube-play"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+    <div class="email">
+      <i class="fa fa-envelope"></i>
+      <a href="mailto:indiamgitm@gmail.com">indiamgitm@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HEADER BRAND ═══ -->
+<header class="header-brand">
+  <div class="container-fluid">
+    <a href="index.html" class="logo">
+      <img class="emblem" src="images/glogo1.png" alt="MGITM Emblem">
+      <img class="title" src="images/glogo2.png" alt="MGITM">
+    </a>
+    <div class="iso-badge hidden-xs">
+      <i class="fa fa-certificate"></i>
+      <div>
+        <span>Quality Standard</span>
+        <strong>ISO 9001:2015 Certified</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="mgitm-nav">
+  <div class="container-fluid">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="director-message.html">Director Message</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li class="active"><a href="result.html">Result</a></li>
+      <li><a href="verify.html">Verify Certificate</a></li>
+      <li><a href="branch-collaboration.html">Branch Collaboration</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle"><i class="fa fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ═══ BANNER ═══ -->
+<div class="page-banner">
+  <h1>Student Result &amp; Marksheet Portal</h1>
+  <p>Official portal for online marksheet generation and examination results verification.</p>
+  <nav class="breadcrumb-nav"><a href="index.html">Home</a> <span>›</span> Marksheet Result</nav>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<section class="section" style="padding: 40px 0 60px;">
+  <div class="section-inner">
+
+    <!-- SEARCH PANEL -->
+    <div class="search-panel">
+      <div style="text-align: center;">
+        <span class="section-label">Examination Division</span>
+        <h2 style="font-size: 24px; margin: 6px 0 10px; color: var(--red-dark);">Enter Roll Number or Registration Number</h2>
+        <p style="color: var(--gray-600); font-size: 14px; margin: 0;">
+          Instant access to official student marksheet and examination transcript.
+        </p>
+      </div>
+
+      <div class="search-box-row">
+        <input type="text" id="searchInput" placeholder="e.g. MGI/ACCA/08/1050 or ELEC2426342335" autocomplete="off" autofocus>
+        <button class="btn-primary" style="padding: 14px 26px; border-radius: 8px; font-weight: 700;" onclick="handleSearch()">
+          <i class="fa fa-search"></i> View Marksheet
+        </button>
+      </div>
+
+      <div class="sample-chips">
+        <span style="font-weight: 700;"><i class="fa fa-bolt" style="color: var(--red);"></i> Quick Demo:</span>
+        <span class="sample-chip" onclick="searchSample('MGI/ACCA/08/1050')">MGI/ACCA/08/1050</span>
+        <span class="sample-chip" onclick="searchSample('ELEC2426342335')">ELEC2426342335</span>
+        <span class="sample-chip" onclick="searchSample('ELEC2426342334')">ELEC2426342334</span>
+        <span class="sample-chip" onclick="searchSample('ELE2224342319')">ELE2224342319</span>
+        <span class="sample-chip" onclick="searchSample('EE21244567291')">EE21244567291</span>
+        <span class="sample-chip" onclick="searchSample('MGI/ME/11/1017')">MGI/ME/11/1017</span>
+      </div>
+    </div>
+
+    <!-- NOT FOUND ALERT -->
+    <div id="notFoundBox" style="display: none; max-width: 800px; margin: 0 auto 30px; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 12px; padding: 25px; text-align: center;">
+      <i class="fa fa-exclamation-circle" style="font-size: 32px; color: #e11d48; margin-bottom: 10px;"></i>
+      <h3 style="color: #9f1239; font-size: 18px; margin: 0 0 6px;">No Academic Record Found</h3>
+      <p style="color: #475569; font-size: 14px; margin: 0;">
+        We could not find any result matching "<strong id="searchedQuery"></strong>". Please verify your Roll No / Registration No and try again, or email us at <a href="mailto:indiamgitm@gmail.com" style="color: var(--red); font-weight: 700;">indiamgitm@gmail.com</a>.
+      </p>
+    </div>
+
+    <!-- MARKSHEET DISPLAY CONTAINER -->
+    <div id="marksheetContainer" class="marksheet-outer" style="display: none;">
+      
+      <div class="marksheet-actions">
+        <div>
+          <span style="font-weight: 700; color: #16a34a; font-size: 14px;">
+            <i class="fa fa-check-circle"></i> Official Academic Record Verified
+          </span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn-primary" style="padding: 10px 20px; font-size: 14px; gap: 8px;" onclick="window.print()">
+            <i class="fa fa-print"></i> Print Single Page Marksheet
+          </button>
+          <a id="verifyLinkBtn" href="verify.html" class="btn-secondary" style="padding: 10px 18px; font-size: 14px; gap: 6px; background: #fff; border: 1px solid var(--gray-400);">
+            <i class="fa fa-shield"></i> Verify Certificate
+          </a>
+        </div>
+      </div>
+
+      <!-- THE OFFICIAL STATEMENT OF MARKS CARD -->
+      <div class="marksheet-card" id="marksheetCard">
+        
+        <!-- HEADER -->
+        <div class="marksheet-header">
+          <div class="marksheet-top-brand">
+            <img class="logo-img" src="images/glogo1.png" alt="MGITM Emblem">
+            <div>
+              <h2 class="inst-name">MAHATMA GANDHI INSTITUTE OF TECHNOLOGY &amp; MANAGEMENT</h2>
+              <div class="marksheet-subhead">An Autonomous Institution Registered under Govt. of India Norms &bull; ISO 9001:2015 Certified</div>
+            </div>
+          </div>
+          <div class="marksheet-doc-badge">Official Statement of Marks</div>
+        </div>
+
+        <!-- META STRIP -->
+        <div class="marksheet-meta-strip">
+          <div><strong>EXAM CODE:</strong> <span id="metaExamCode">MGITM-EXAM-2026</span></div>
+          <div><strong>SERIAL NO:</strong> <span id="metaSerial">MGI/STMT/2026/<span id="msId">001</span></span></div>
+          <div><strong>DATE OF ISSUE:</strong> <span id="msIssueDate">--</span></div>
+        </div>
+
+        <!-- CANDIDATE DETAILS GRID -->
+        <div class="marksheet-details-grid">
+          <div class="detail-row">
+            <span class="detail-lbl">Candidate Name:</span>
+            <span class="detail-val" id="msName">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-lbl">Father's Name:</span>
+            <span class="detail-val" id="msFather">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-lbl">Roll Number:</span>
+            <span class="detail-val" id="msRoll">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-lbl">Enrollment / Reg No:</span>
+            <span class="detail-val" id="msReg">--</span>
+          </div>
+          <div class="detail-row" style="grid-column: span 2;">
+            <span class="detail-lbl">Course / Program:</span>
+            <span class="detail-val" id="msCourse" style="color: #880e4f;">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-lbl">Duration:</span>
+            <span class="detail-val" id="msDuration">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-lbl">Result Status:</span>
+            <span class="detail-val" id="msStatus"><span class="status-badge-pass">PASSED</span></span>
+          </div>
+        </div>
+
+        <!-- MARKS BREAKDOWN TABLE -->
+        <table class="marks-table">
+          <thead>
+            <tr>
+              <th style="width: 10%;">Sl.</th>
+              <th style="text-align: left; width: 45%;">Academic Session / Year</th>
+              <th style="width: 15%;">Max Marks</th>
+              <th style="width: 15%;">Marks Obtained</th>
+              <th style="width: 15%;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="marksTableBody">
+            <!-- Dynamic rows inserted here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2" style="text-align: right; padding-right: 18px;">GRAND TOTAL / AGGREGATE:</td>
+              <td id="tfootMax">--</td>
+              <td id="tfootObt">--</td>
+              <td id="tfootGrade">Grade: A</td>
+            </tr>
+            <tr style="background: #ffffff !important; font-size: 12px; color: #475569;">
+              <td colspan="5" style="text-align: center; padding: 6px 12px;">
+                <strong>PERCENTAGE:</strong> <span id="msPercentage" style="color:#880e4f; font-weight:800;">--</span> &nbsp;|&nbsp;
+                <strong>DIVISION:</strong> <span id="msDivision" style="color:#880e4f; font-weight:800;">FIRST DIVISION</span> &nbsp;|&nbsp;
+                <strong>FINAL GRADE:</strong> <span id="msFinalGrade" style="color:#880e4f; font-weight:800;">A</span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <!-- FOOTER & SIGNATURES -->
+        <div class="marksheet-footer">
+          <div class="qr-area">
+            <img id="msQrCode" src="" alt="Verification QR Code">
+            <div class="qr-caption">Scan to Verify</div>
+          </div>
+          <div class="security-statement">
+            <div class="iso-seal-mini"><i class="fa fa-shield"></i> ISO 9001:2015 CERTIFIED REPOSITORY</div>
+            <div>This is a verified computer-generated statement issued by Mahatma Gandhi Institute of Technology &amp; Management. Authenticity can be cross-verified online 24×7.</div>
+          </div>
+          <div class="sign-area">
+            <div class="sign-graphic">M. G. Sharma</div>
+            <div class="sign-line"></div>
+            <div class="sign-title">Controller of Exams</div>
+            <div style="font-size: 9px; color: var(--gray-600);">MGITM Delhi NCR</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-banner">
+  <h2>Need Institutional Certificate Verification?</h2>
+  <p>Organizations and employers can authenticate credentials directly through our online verification system.</p>
+  <a href="verify.html" class="btn-white">Verify Certificate <i class="fa fa-arrow-right"></i></a>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h4>About MGITM</h4>
+      <p>ISO 9001:2015 certified autonomous educational institution. Delhi NCR, India.</p>
+      <p style="margin-top:12px;"><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li>
+        <li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li>
+        <li><a href="courses.html"><i class="fa fa-angle-right"></i> Courses</a></li>
+        <li><a href="result.html"><i class="fa fa-angle-right"></i> Result Portal</a></li>
+        <li><a href="verify.html"><i class="fa fa-angle-right"></i> Verify Certificate</a></li>
+        <li><a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Official Desk</h4>
+      <p>Corporate Office: Delhi NCR, India</p>
+      <p><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 MGITM India. All Rights Reserved.</div>
+</footer>
+
+<script>
+// Comprehensive database with all records
+const FALLBACK_RESULTS = [
+  {
+    "ID": "1",
+    "REGNO": "MGI/ME/11/1017",
+    "ROLLNO": "ME111017",
+    "ENROLLMENTNO": "MGI/ME/11/1017",
+    "NAME": "RAHUL KUMAR",
+    "FATHERNAME": "SURESH KUMAR",
+    "COURSENAME": "DIPLOMA IN MECHANICAL ENGINEERING",
+    "COURSEDURATION": "3 Years",
+    "FirstYear": "750/1000",
+    "SecondYear": "780/1000",
+    "ThirdYear": "810/1000",
+    "Total": "2340/3000",
+    "Percentage": "78.00%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "15 Jul 2021",
+    "COMPLETEDATE": "30 Jun 2021"
+  },
+  {
+    "ID": "2",
+    "REGNO": "MGI/ACCA/08/1050",
+    "ROLLNO": "ACCA081050",
+    "ENROLLMENTNO": "MGI/ACCA/08/1050",
+    "NAME": "AMIT SHARMA",
+    "FATHERNAME": "RAMESH SHARMA",
+    "COURSENAME": "CERTIFICATE IN ACCOUNTING",
+    "COURSEDURATION": "1 Year",
+    "FirstYear": "420/500",
+    "SecondYear": "",
+    "ThirdYear": "",
+    "Total": "420/500",
+    "Percentage": "84.00%",
+    "Grade": "A+",
+    "Division": "First Division with Distinction",
+    "Status": "PASSED",
+    "ISSUEDATE": "10 Aug 2022",
+    "COMPLETEDATE": "31 Jul 2022"
+  },
+  {
+    "ID": "3",
+    "REGNO": "MGI/HM/17/1013",
+    "ROLLNO": "HM171013",
+    "ENROLLMENTNO": "MGI/HM/17/1013",
+    "NAME": "VIKAS VERMA",
+    "FATHERNAME": "MAHESH VERMA",
+    "COURSENAME": "DIPLOMA IN HOTEL MANAGEMENT",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "680/900",
+    "SecondYear": "710/900",
+    "ThirdYear": "",
+    "Total": "1390/1800",
+    "Percentage": "77.22%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "05 Sep 2020",
+    "COMPLETEDATE": "25 Aug 2020"
+  },
+  {
+    "ID": "4",
+    "REGNO": "MGI/ELEC24-267145293",
+    "ROLLNO": "ELEC2426342335",
+    "ENROLLMENTNO": "MGI/ELEC24-267145293",
+    "NAME": "NISHANT SAINI",
+    "FATHERNAME": "CHANDRAPAL SAINI",
+    "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRICIAN",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "780/1000",
+    "SecondYear": "810/1000",
+    "ThirdYear": "",
+    "Total": "1590/2000",
+    "Percentage": "79.50%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "05/08/2026",
+    "COMPLETEDATE": "31/07/2026"
+  },
+  {
+    "ID": "5",
+    "REGNO": "MGI/ELEC24-267145292",
+    "ROLLNO": "ELEC2426342334",
+    "ENROLLMENTNO": "MGI/ELEC24-267145292",
+    "NAME": "MOHIT KUMAR",
+    "FATHERNAME": "BIRJESH KUMAR",
+    "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRICIAN",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "755/1000",
+    "SecondYear": "790/1000",
+    "ThirdYear": "",
+    "Total": "1545/2000",
+    "Percentage": "77.25%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "05/08/2026",
+    "COMPLETEDATE": "31/07/2026"
+  },
+  {
+    "ID": "6",
+    "REGNO": "MGI/ELE22-247145240",
+    "ROLLNO": "ELE2224342319",
+    "ENROLLMENTNO": "MGI/ELE22-247145240",
+    "NAME": "RAJ SHARMA",
+    "FATHERNAME": "DHIRESH KUMAR",
+    "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRONICS",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "770/1000",
+    "SecondYear": "800/1000",
+    "ThirdYear": "",
+    "Total": "1570/2000",
+    "Percentage": "78.50%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "28/08/2024",
+    "COMPLETEDATE": "15/08/2024"
+  },
+  {
+    "ID": "7",
+    "REGNO": "MGI/EE/21-24377518",
+    "ROLLNO": "EE21244567291",
+    "ENROLLMENTNO": "MGI/EE/21-24377518",
+    "NAME": "HEMANT",
+    "FATHERNAME": "VED PARKASH",
+    "COURSENAME": "DIPLOMA IN ELECTRICAL ENGINEERING",
+    "COURSEDURATION": "3 Years",
+    "FirstYear": "765/1000",
+    "SecondYear": "795/1000",
+    "ThirdYear": "825/1000",
+    "Total": "2385/3000",
+    "Percentage": "79.50%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "09/08/2024",
+    "COMPLETEDATE": "25/07/2024"
+  }
+];
+
+let resultsData = FALLBACK_RESULTS;
+
+// Load db/results.json if available
+fetch('db/results.json')
+  .then(res => res.json())
+  .then(data => {
+    if (Array.isArray(data) && data.length > 0) {
+      resultsData = data;
+    }
+  })
+  .catch(() => {
+    // Uses FALLBACK_RESULTS seamlessly
+  });
+
+// Normalization function for reliable matching
+function cleanStr(str) {
+  if (!str) return '';
+  return String(str).toUpperCase().replace(/[\s\-\/\_\.\:]/g, '');
+}
+
+function findStudent(query) {
+  if (!query) return null;
+  const rawQ = query.trim().toUpperCase();
+  const cleanQ = cleanStr(query);
+
+  // 1. Direct exact or cleaned match
+  let found = resultsData.find(item => {
+    return cleanStr(item.REGNO) === cleanQ ||
+           cleanStr(item.ROLLNO) === cleanQ ||
+           cleanStr(item.ENROLLMENTNO) === cleanQ ||
+           cleanStr(item.ID) === cleanQ ||
+           item.REGNO.toUpperCase() === rawQ ||
+           (item.ROLLNO && item.ROLLNO.toUpperCase() === rawQ);
+  });
+
+  // 2. Contains match if exact not found
+  if (!found) {
+    found = resultsData.find(item => {
+      return cleanStr(item.REGNO).includes(cleanQ) ||
+             cleanStr(item.ROLLNO).includes(cleanQ) ||
+             cleanQ.includes(cleanStr(item.REGNO)) ||
+             cleanQ.includes(cleanStr(item.ROLLNO));
+    });
+  }
+
+  return found;
+}
+
+function renderMarksheet(student) {
+  document.getElementById('notFoundBox').style.display = 'none';
+  document.getElementById('marksheetContainer').style.display = 'block';
+
+  document.getElementById('msId').textContent = (student.ID || '01').padStart(3, '0');
+  document.getElementById('msIssueDate').textContent = student.ISSUEDATE || 'Official Record';
+  document.getElementById('msName').textContent = student.NAME || '--';
+  document.getElementById('msFather').textContent = student.FATHERNAME || '--';
+  document.getElementById('msRoll').textContent = student.ROLLNO || student.REGNO || '--';
+  document.getElementById('msReg').textContent = student.REGNO || student.ENROLLMENTNO || '--';
+  document.getElementById('msCourse').textContent = student.COURSENAME || '--';
+  document.getElementById('msDuration').textContent = student.COURSEDURATION || '--';
+  
+  const statusHtml = `<span class="status-badge-pass">${student.Status || 'PASSED'}</span>`;
+  document.getElementById('msStatus').innerHTML = statusHtml;
+
+  // Build Marks Breakdown Rows
+  const tbody = document.getElementById('marksTableBody');
+  tbody.innerHTML = '';
+
+  let rowCount = 0;
+  let totalMax = 0;
+  let totalObt = 0;
+
+  function parseMarks(str) {
+    if (!str || !str.includes('/')) return null;
+    const parts = str.split('/');
+    return { obt: parseInt(parts[0], 10), max: parseInt(parts[1], 10) };
+  }
+
+  if (student.FirstYear) {
+    rowCount++;
+    const m = parseMarks(student.FirstYear);
+    if (m) { totalObt += m.obt; totalMax += m.max; }
+    tbody.innerHTML += `
+      <tr>
+        <td>${rowCount}</td>
+        <td style="text-align:left;">First Year Examination Transcript</td>
+        <td>${m ? m.max : '--'}</td>
+        <td>${m ? m.obt : student.FirstYear}</td>
+        <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
+      </tr>`;
+  }
+
+  if (student.SecondYear) {
+    rowCount++;
+    const m = parseMarks(student.SecondYear);
+    if (m) { totalObt += m.obt; totalMax += m.max; }
+    tbody.innerHTML += `
+      <tr>
+        <td>${rowCount}</td>
+        <td style="text-align:left;">Second Year Examination Transcript</td>
+        <td>${m ? m.max : '--'}</td>
+        <td>${m ? m.obt : student.SecondYear}</td>
+        <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
+      </tr>`;
+  }
+
+  if (student.ThirdYear) {
+    rowCount++;
+    const m = parseMarks(student.ThirdYear);
+    if (m) { totalObt += m.obt; totalMax += m.max; }
+    tbody.innerHTML += `
+      <tr>
+        <td>${rowCount}</td>
+        <td style="text-align:left;">Third Year Examination Transcript</td>
+        <td>${m ? m.max : '--'}</td>
+        <td>${m ? m.obt : student.ThirdYear}</td>
+        <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
+      </tr>`;
+  }
+
+  // If Total string exists in record
+  if (student.Total && student.Total.includes('/')) {
+    const totParts = student.Total.split('/');
+    totalObt = parseInt(totParts[0], 10);
+    totalMax = parseInt(totParts[1], 10);
+  }
+
+  document.getElementById('tfootMax').textContent = totalMax > 0 ? totalMax : '--';
+  document.getElementById('tfootObt').textContent = totalObt > 0 ? totalObt : (student.Total || '--');
+  document.getElementById('tfootGrade').textContent = `Grade: ${student.Grade || 'A'}`;
+
+  const pct = student.Percentage || (totalMax > 0 ? ((totalObt / totalMax) * 100).toFixed(2) + '%' : '--');
+  document.getElementById('msPercentage').textContent = pct;
+  document.getElementById('msDivision').textContent = student.Division || 'First Division';
+  document.getElementById('msFinalGrade').textContent = student.Grade || 'A';
+
+  // Dynamic QR Code for verification
+  const verifyTarget = encodeURIComponent(window.location.origin + window.location.pathname.replace('result.html', 'verify.html') + `?regno=${encodeURIComponent(student.REGNO || student.ROLLNO)}`);
+  document.getElementById('msQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${verifyTarget}`;
+
+  // Update button link
+  document.getElementById('verifyLinkBtn').href = `verify.html?regno=${encodeURIComponent(student.REGNO || student.ROLLNO)}`;
+
+  // Scroll smoothly to marksheet
+  document.getElementById('marksheetContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function handleSearch() {
+  const q = document.getElementById('searchInput').value.trim();
+  if (!q) {
+    alert('Please enter a Registration Number or Roll Number');
+    return;
+  }
+  const student = findStudent(q);
+  if (student) {
+    renderMarksheet(student);
+  } else {
+    document.getElementById('marksheetContainer').style.display = 'none';
+    document.getElementById('searchedQuery').textContent = q;
+    document.getElementById('notFoundBox').style.display = 'block';
+  }
+}
+
+function searchSample(val) {
+  document.getElementById('searchInput').value = val;
+  handleSearch();
+}
+
+// Enter key trigger
+document.getElementById('searchInput').addEventListener('keyup', function(e) {
+  if (e.key === 'Enter') handleSearch();
+});
+
+// Auto search on query string
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('regno') || urlParams.get('roll') || urlParams.get('q');
+  if (q) {
+    document.getElementById('searchInput').value = q;
+    setTimeout(() => { handleSearch(); }, 200);
+  }
+});
+
+// Page Loader & Nav Toggle
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const l = document.getElementById('loading');
+    if (l) l.style.display = 'none';
+  }, 300);
+});
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

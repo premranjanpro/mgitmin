@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Online Certificate Verification Portal — MGITM India</title>
+  <meta name="description" content="Official online certificate and credential verification portal of Mahatma Gandhi Institute of Technology &amp; Management (MGITM). Instantly authenticate student certificates, diplomas, and marksheets.">
+  <link rel="shortcut icon" href="images/glogo1.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/modern-mgitm.css">
+  <style>
+    /* ─── VERIFICATION SPECIFIC STYLES ─── */
+    .verify-search-card {
+      background: #ffffff;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      max-width: 820px;
+      margin: 0 auto 35px;
+    }
+    .verify-input-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .verify-input-group input {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 2px solid var(--gray-200);
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+    }
+    .verify-input-group input:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 4px rgba(194, 24, 91, 0.12);
+    }
+    .sample-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--gray-600);
+    }
+    .sample-chip {
+      background: var(--red-pale);
+      border: 1px solid var(--red-light);
+      color: var(--red-dark);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sample-chip:hover {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    /* ─── OFFICIAL VERIFICATION CERTIFICATE (Single Page A4) ─── */
+    .verify-result-wrapper {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .verify-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .certificate-card {
+      background: #ffffff;
+      border: 3px double #1e3a8a;
+      outline: 1px solid #3b82f6;
+      outline-offset: -8px;
+      border-radius: 8px;
+      padding: 32px 38px;
+      position: relative;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      background-image: radial-gradient(#eff6ff 1px, transparent 1px);
+      background-size: 20px 20px;
+      overflow: hidden;
+    }
+    .certificate-card::before {
+      content: "VERIFIED";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 95px;
+      font-weight: 900;
+      color: rgba(22, 163, 74, 0.04);
+      letter-spacing: 12px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .cert-header {
+      text-align: center;
+      border-bottom: 2px solid #1e3a8a;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+    .cert-brand img {
+      height: 60px;
+      object-fit: contain;
+    }
+    .cert-brand h2 {
+      font-family: var(--font-head);
+      font-size: 21px;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cert-subhead {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-600);
+      margin: 2px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cert-title-badge {
+      display: inline-block;
+      background: #1e3a8a;
+      color: #ffffff;
+      padding: 5px 22px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .status-banner-verified {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 6px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .status-banner-verified .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #15803d;
+      font-weight: 800;
+      font-size: 14.5px;
+    }
+    .status-banner-verified .left i {
+      font-size: 22px;
+    }
+    .status-banner-verified .ref-id {
+      font-size: 12px;
+      font-weight: 700;
+      color: #475569;
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+      row-gap: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+    }
+    .cert-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted #f1f5f9;
+      padding: 5px 0;
+    }
+    .cert-lbl {
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cert-val {
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .cert-footer {
+      display: grid;
+      grid-template-columns: 130px 1fr 140px;
+      gap: 16px;
+      align-items: center;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #e2e8f0;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-qr {
+      text-align: center;
+    }
+    .cert-qr img {
+      width: 90px;
+      height: 90px;
+      border: 1px solid #cbd5e1;
+      padding: 3px;
+      background: #fff;
+      border-radius: 4px;
+    }
+    .cert-notice {
+      text-align: center;
+      font-size: 11px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+    .cert-sign {
+      text-align: center;
+    }
+    .cert-sign-name {
+      font-family: 'Playfair Display', cursive, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: #1e3a8a;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .cert-sign-line {
+      width: 110px;
+      height: 1px;
+      background: #94a3b8;
+      margin: 4px auto;
+    }
+    .cert-sign-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+    }
+
+    /* ─── PRINT STYLING (SINGLE A4 PAGE) ─── */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+      body * {
+        visibility: hidden;
+      }
+      #certificateContainer, #certificateContainer * {
+        visibility: visible;
+      }
+      #certificateContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .top-strip,
+      .header-brand,
+      .mgitm-nav,
+      .page-banner,
+      .verify-search-card,
+      .verify-actions,
+      .cta-banner,
+      .site-footer,
+      #loading {
+        display: none !important;
+      }
+      .certificate-card {
+        box-shadow: none !important;
+        border: 2.5px double #1e3a8a !important;
+        outline: 1px solid #3b82f6 !important;
+        padding: 18px 24px !important;
+        margin: 0 !important;
+        page-break-inside: avoid !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .cert-header {
+        padding-bottom: 8px !important;
+        margin-bottom: 12px !important;
+      }
+      .cert-brand img {
+        height: 50px !important;
+      }
+      .cert-brand h2 {
+        font-size: 19px !important;
+      }
+      .cert-grid {
+        padding: 10px 14px !important;
+        margin-bottom: 12px !important;
+        font-size: 11.5px !important;
+        row-gap: 4px !important;
+      }
+      .cert-footer {
+        margin-top: 14px !important;
+        padding-top: 10px !important;
+      }
+      .cert-qr img {
+        width: 75px !important;
+        height: 75px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="loading"><div class="loader-ring"></div></div>
+
+<!-- ═══ TOP STRIP ═══ -->
+<div class="top-strip">
+  <div class="container-fluid">
+    <div class="social">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-youtube-play"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+    <div class="email">
+      <i class="fa fa-envelope"></i>
+      <a href="mailto:indiamgitm@gmail.com">indiamgitm@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HEADER BRAND ═══ -->
+<header class="header-brand">
+  <div class="container-fluid">
+    <a href="index.html" class="logo">
+      <img class="emblem" src="images/glogo1.png" alt="MGITM Emblem">
+      <img class="title" src="images/glogo2.png" alt="MGITM">
+    </a>
+    <div class="iso-badge hidden-xs">
+      <i class="fa fa-certificate"></i>
+      <div>
+        <span>Quality Standard</span>
+        <strong>ISO 9001:2015 Certified</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="mgitm-nav">
+  <div class="container-fluid">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="director-message.html">Director Message</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="result.html">Result</a></li>
+      <li class="active"><a href="verify.html">Verify Certificate</a></li>
+      <li><a href="branch-collaboration.html">Branch Collaboration</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle"><i class="fa fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ═══ BANNER ═══ -->
+<div class="page-banner">
+  <h1>Online Certificate Verification Portal</h1>
+  <p>Authentic 24×7 verification of MGITM student certificates, diplomas, and credentials.</p>
+  <nav class="breadcrumb-nav"><a href="index.html">Home</a> <span>›</span> Certificate Verification</nav>
+</div>
+
+<!-- ═══ MAIN SECTION ═══ -->
+<section class="section" style="padding: 40px 0 60px;">
+  <div class="section-inner">
+
+    <!-- SEARCH BOX -->
+    <div class="verify-search-card">
+      <div style="text-align: center;">
+        <span class="section-label">Credential Authentication</span>
+        <h2 style="font-size: 24px; margin: 6px 0 10px; color: #1e3a8a;">Instant Online Certificate Verification</h2>
+        <p style="color: var(--gray-600); font-size: 14px; margin: 0;">
+          Enter the student's <strong>Roll Number</strong> or <strong>Enrollment / Registration Number</strong> to verify authentic certification record.
+        </p>
+      </div>
+
+      <div class="verify-input-group">
+        <input type="text" id="verifyInput" placeholder="e.g. MGI/ACCA/08/1050 or ELEC2426342335" autocomplete="off" autofocus>
+        <button class="btn-primary" style="padding: 14px 26px; border-radius: 8px; font-weight: 700; background: #1e3a8a;" onclick="handleVerifySearch()">
+          <i class="fa fa-shield"></i> Verify Certificate
+        </button>
+      </div>
+
+      <div class="sample-chips">
+        <span style="font-weight: 700; color: #1e3a8a;"><i class="fa fa-check-square-o"></i> Quick Verify:</span>
+        <span class="sample-chip" onclick="verifySample('MGI/ACCA/08/1050')">MGI/ACCA/08/1050</span>
+        <span class="sample-chip" onclick="verifySample('ELEC2426342335')">ELEC2426342335</span>
+        <span class="sample-chip" onclick="verifySample('ELEC2426342334')">ELEC2426342334</span>
+        <span class="sample-chip" onclick="verifySample('ELE2224342319')">ELE2224342319</span>
+        <span class="sample-chip" onclick="verifySample('EE21244567291')">EE21244567291</span>
+        <span class="sample-chip" onclick="verifySample('MGI/ME/11/1017')">MGI/ME/11/1017</span>
+      </div>
+    </div>
+
+    <!-- NOT FOUND ALERT -->
+    <div id="vNotFoundBox" style="display: none; max-width: 820px; margin: 0 auto 30px; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 12px; padding: 25px; text-align: center;">
+      <i class="fa fa-exclamation-triangle" style="font-size: 32px; color: #e11d48; margin-bottom: 10px;"></i>
+      <h3 style="color: #9f1239; font-size: 18px; margin: 0 0 6px;">Certificate Record Not Found</h3>
+      <p style="color: #475569; font-size: 14px; margin: 0;">
+        No active credential found matching "<strong id="vSearchedQuery"></strong>". Please check the number and retry or contact examination cell at <a href="mailto:indiamgitm@gmail.com" style="color: var(--red); font-weight: 700;">indiamgitm@gmail.com</a>.
+      </p>
+    </div>
+
+    <!-- VERIFICATION CERTIFICATE DISPLAY -->
+    <div id="certificateContainer" class="verify-result-wrapper" style="display: none;">
+      
+      <div class="verify-actions">
+        <div>
+          <span style="font-weight: 800; color: #16a34a; font-size: 14.5px;">
+            <i class="fa fa-check-circle"></i> Authenticated in MGITM National Registry
+          </span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn-primary" style="padding: 10px 20px; font-size: 14px; gap: 8px; background: #1e3a8a;" onclick="window.print()">
+            <i class="fa fa-print"></i> Print Verification Certificate
+          </button>
+          <a id="viewMarksheetBtn" href="result.html" class="btn-secondary" style="padding: 10px 18px; font-size: 14px; gap: 6px; background: #fff; border: 1px solid var(--gray-400);">
+            <i class="fa fa-file-text-o"></i> View Detailed Marksheet
+          </a>
+        </div>
+      </div>
+
+      <!-- THE OFFICIAL VERIFICATION CERTIFICATE CARD -->
+      <div class="certificate-card" id="certificateCard">
+        
+        <!-- HEADER -->
+        <div class="cert-header">
+          <div class="cert-brand">
+            <img src="images/glogo1.png" alt="MGITM Emblem">
+            <div>
+              <h2>MAHATMA GANDHI INSTITUTE OF TECHNOLOGY &amp; MANAGEMENT</h2>
+              <div class="cert-subhead">An Autonomous Institution Registered under Govt. of India Norms &bull; ISO 9001:2015 Certified</div>
+            </div>
+          </div>
+          <div class="cert-title-badge">Online Certificate Verification Record</div>
+        </div>
+
+        <!-- STATUS BANNER -->
+        <div class="status-banner-verified">
+          <div class="left">
+            <i class="fa fa-shield"></i>
+            <span>STATUS: VERIFIED &amp; AUTHENTIC DOCUMENT</span>
+          </div>
+          <div class="ref-id">
+            REF NO: <strong id="vRefId">MGITM/VER/2026/8942</strong>
+          </div>
+        </div>
+
+        <!-- CANDIDATE & CREDENTIAL DETAILS GRID -->
+        <div class="cert-grid">
+          <div class="cert-row">
+            <span class="cert-lbl">Candidate Full Name:</span>
+            <span class="cert-val" id="vName">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Father's Name:</span>
+            <span class="cert-val" id="vFather">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Enrollment / Reg No:</span>
+            <span class="cert-val" id="vReg" style="color: #1e3a8a;">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Roll Number:</span>
+            <span class="cert-val" id="vRoll" style="color: #1e3a8a;">--</span>
+          </div>
+          <div class="cert-row" style="grid-column: span 2;">
+            <span class="cert-lbl">Awarded Program / Course:</span>
+            <span class="cert-val" id="vCourse" style="color: #880e4f;">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Course Duration:</span>
+            <span class="cert-val" id="vDuration">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Date of Issue / Completion:</span>
+            <span class="cert-val" id="vIssueDate">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Final Aggregate &amp; Grade:</span>
+            <span class="cert-val" id="vGrade" style="color: #16a34a;">--</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-lbl">Verification Authority:</span>
+            <span class="cert-val">MGITM Central Board</span>
+          </div>
+        </div>
+
+        <!-- FOOTER & DIGITAL SEALS -->
+        <div class="cert-footer">
+          <div class="cert-qr">
+            <img id="vQrCode" src="" alt="Live Verification QR Code">
+            <div style="font-size: 9.5px; font-weight: 700; color: #475569; margin-top: 3px; text-transform: uppercase;">Scan To Verify</div>
+          </div>
+          <div class="cert-notice">
+            <div style="font-weight: 800; color: #1e3a8a; margin-bottom: 3px; font-size: 11.5px;">
+              <i class="fa fa-lock"></i> OFFICIAL DIGITAL AUTHENTICATION
+            </div>
+            <div>This credential has been verified against the official records maintained at the Central Directorate of MGITM India. For further verification inquiries, contact the registrar at indiamgitm@gmail.com.</div>
+          </div>
+          <div class="cert-sign">
+            <div class="cert-sign-name">M. G. Sharma</div>
+            <div class="cert-sign-line"></div>
+            <div class="cert-sign-title">Controller of Exams</div>
+            <div style="font-size: 9px; color: #64748b;">MGITM Directorate</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h4>About MGITM</h4>
+      <p>ISO 9001:2015 certified autonomous educational institution. Delhi NCR, India.</p>
+      <p style="margin-top:12px;"><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li>
+        <li><a href="about-us.html"><i class="fa fa-angle-right"></i> About Us</a></li>
+        <li><a href="courses.html"><i class="fa fa-angle-right"></i> Courses</a></li>
+        <li><a href="result.html"><i class="fa fa-angle-right"></i> Result Portal</a></li>
+        <li><a href="verify.html"><i class="fa fa-angle-right"></i> Verify Certificate</a></li>
+        <li><a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Official Desk</h4>
+      <p>Corporate Office: Delhi NCR, India</p>
+      <p><a href="mailto:indiamgitm@gmail.com" style="color:var(--red);">indiamgitm@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 MGITM India. All Rights Reserved.</div>
+</footer>
+
+<script>
+// Comprehensive database with all records
+const FALLBACK_RESULTS = [
+  {
+    "ID": "1",
+    "REGNO": "MGI/ME/11/1017",
+    "ROLLNO": "ME111017",
+    "ENROLLMENTNO": "MGI/ME/11/1017",
+    "NAME": "RAHUL KUMAR",
+    "FATHERNAME": "SURESH KUMAR",
+    "COURSENAME": "DIPLOMA IN MECHANICAL ENGINEERING",
+    "COURSEDURATION": "3 Years",
+    "FirstYear": "750/1000",
+    "SecondYear": "780/1000",
+    "ThirdYear": "810/1000",
+    "Total": "2340/3000",
+    "Percentage": "78.00%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "15 Jul 2021",
+    "COMPLETEDATE": "30 Jun 2021"
+  },
+  {
+    "ID": "2",
+    "REGNO": "MGI/ACCA/08/1050",
+    "ROLLNO": "ACCA081050",
+    "ENROLLMENTNO": "MGI/ACCA/08/1050",
+    "NAME": "AMIT SHARMA",
+    "FATHERNAME": "RAMESH SHARMA",
+    "COURSENAME": "CERTIFICATE IN ACCOUNTING",
+    "COURSEDURATION": "1 Year",
+    "FirstYear": "420/500",
+    "SecondYear": "",
+    "ThirdYear": "",
+    "Total": "420/500",
+    "Percentage": "84.00%",
+    "Grade": "A+",
+    "Division": "First Division with Distinction",
+    "Status": "PASSED",
+    "ISSUEDATE": "10 Aug 2022",
+    "COMPLETEDATE": "31 Jul 2022"
+  },
+  {
+    "ID": "3",
+    "REGNO": "MGI/HM/17/1013",
+    "ROLLNO": "HM171013",
+    "ENROLLMENTNO": "MGI/HM/17/1013",
+    "NAME": "VIKAS VERMA",
+    "FATHERNAME": "MAHESH VERMA",
+    "COURSENAME": "DIPLOMA IN HOTEL MANAGEMENT",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "680/900",
+    "SecondYear": "710/900",
+    "ThirdYear": "",
+    "Total": "1390/1800",
+    "Percentage": "77.22%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "05 Sep 2020",
+    "COMPLETEDATE": "25 Aug 2020"
+  },
+  {
+    "ID": "4",
+    "REGNO": "MGI/ELEC24-267145293",
+    "ROLLNO": "ELEC2426342335",
+    "ENROLLMENTNO": "MGI/ELEC24-267145293",
+    "NAME": "NISHANT SAINI",
+    "FATHERNAME": "CHANDRAPAL SAINI",
+    "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRICIAN",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "780/1000",
+    "SecondYear": "810/1000",
+    "ThirdYear": "",
+    "Total": "1590/2000",
+    "Percentage": "79.50%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "05/08/2026",
+    "COMPLETEDATE": "31/07/2026"
+  },
+  {
+    "ID": "5",
+    "REGNO": "MGI/ELEC24-267145292",
+    "ROLLNO": "ELEC2426342334",
+    "ENROLLMENTNO": "MGI/ELEC24-267145292",
+    "NAME": "MOHIT KUMAR",
+    "FATHERNAME": "BIRJESH KUMAR",
+    "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRICIAN",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "755/1000",
+    "SecondYear": "790/1000",
+    "ThirdYear": "",
+    "Total": "1545/2000",
+    "Percentage": "77.25%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "05/08/2026",
+    "COMPLETEDATE": "31/07/2026"
+  },
+  {
+    "ID": "6",
+    "REGNO": "MGI/ELE22-247145240",
+    "ROLLNO": "ELE2224342319",
+    "ENROLLMENTNO": "MGI/ELE22-247145240",
+    "NAME": "RAJ SHARMA",
+    "FATHERNAME": "DHIRESH KUMAR",
+    "COURSENAME": "INDUSTRIAL TRADE CERTIFICATE – ELECTRONICS",
+    "COURSEDURATION": "2 Years",
+    "FirstYear": "770/1000",
+    "SecondYear": "800/1000",
+    "ThirdYear": "",
+    "Total": "1570/2000",
+    "Percentage": "78.50%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "28/08/2024",
+    "COMPLETEDATE": "15/08/2024"
+  },
+  {
+    "ID": "7",
+    "REGNO": "MGI/EE/21-24377518",
+    "ROLLNO": "EE21244567291",
+    "ENROLLMENTNO": "MGI/EE/21-24377518",
+    "NAME": "HEMANT",
+    "FATHERNAME": "VED PARKASH",
+    "COURSENAME": "DIPLOMA IN ELECTRICAL ENGINEERING",
+    "COURSEDURATION": "3 Years",
+    "FirstYear": "765/1000",
+    "SecondYear": "795/1000",
+    "ThirdYear": "825/1000",
+    "Total": "2385/3000",
+    "Percentage": "79.50%",
+    "Grade": "A",
+    "Division": "First Division",
+    "Status": "PASSED",
+    "ISSUEDATE": "09/08/2024",
+    "COMPLETEDATE": "25/07/2024"
+  }
+];
+
+let verifyData = FALLBACK_RESULTS;
+
+fetch('db/results.json')
+  .then(res => res.json())
+  .then(data => {
+    if (Array.isArray(data) && data.length > 0) {
+      verifyData = data;
+    }
+  })
+  .catch(() => {});
+
+function cleanStr(str) {
+  if (!str) return '';
+  return String(str).toUpperCase().replace(/[\s\-\/\_\.\:]/g, '');
+}
+
+function findStudent(query) {
+  if (!query) return null;
+  const rawQ = query.trim().toUpperCase();
+  const cleanQ = cleanStr(query);
+
+  let found = verifyData.find(item => {
+    return cleanStr(item.REGNO) === cleanQ ||
+           cleanStr(item.ROLLNO) === cleanQ ||
+           cleanStr(item.ENROLLMENTNO) === cleanQ ||
+           cleanStr(item.ID) === cleanQ ||
+           item.REGNO.toUpperCase() === rawQ ||
+           (item.ROLLNO && item.ROLLNO.toUpperCase() === rawQ);
+  });
+
+  if (!found) {
+    found = verifyData.find(item => {
+      return cleanStr(item.REGNO).includes(cleanQ) ||
+             cleanStr(item.ROLLNO).includes(cleanQ) ||
+             cleanQ.includes(cleanStr(item.REGNO)) ||
+             cleanQ.includes(cleanStr(item.ROLLNO));
+    });
+  }
+
+  return found;
+}
+
+function renderVerification(student) {
+  document.getElementById('vNotFoundBox').style.display = 'none';
+  document.getElementById('certificateContainer').style.display = 'block';
+
+  const regNum = student.REGNO || student.ENROLLMENTNO || '0000';
+  const cleanRef = regNum.replace(/[^A-Z0-9]/gi, '');
+  document.getElementById('vRefId').textContent = `MGITM/VER/2026/${cleanRef}`;
+
+  document.getElementById('vName').textContent = student.NAME || '--';
+  document.getElementById('vFather').textContent = student.FATHERNAME || '--';
+  document.getElementById('vReg').textContent = student.REGNO || student.ENROLLMENTNO || '--';
+  document.getElementById('vRoll').textContent = student.ROLLNO || student.REGNO || '--';
+  document.getElementById('vCourse').textContent = student.COURSENAME || '--';
+  document.getElementById('vDuration').textContent = student.COURSEDURATION || '--';
+  document.getElementById('vIssueDate').textContent = student.ISSUEDATE || student.COMPLETEDATE || '--';
+  
+  const gradeText = `${student.Grade || 'A'} (${student.Percentage || 'PASSED'}) - ${student.Division || 'First Division'}`;
+  document.getElementById('vGrade').textContent = gradeText;
+
+  // Live QR Code pointing to this verification record
+  const currentUrl = encodeURIComponent(window.location.href);
+  document.getElementById('vQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${currentUrl}`;
+
+  // Link to Marksheet
+  document.getElementById('viewMarksheetBtn').href = `result.html?regno=${encodeURIComponent(student.REGNO || student.ROLLNO)}`;
+
+  // Scroll to certificate
+  document.getElementById('certificateContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function handleVerifySearch() {
+  const q = document.getElementById('verifyInput').value.trim();
+  if (!q) {
+    alert('Please enter a Registration Number or Roll Number to verify');
+    return;
+  }
+  const student = findStudent(q);
+  if (student) {
+    renderVerification(student);
+  } else {
+    document.getElementById('certificateContainer').style.display = 'none';
+    document.getElementById('vSearchedQuery').textContent = q;
+    document.getElementById('vNotFoundBox').style.display = 'block';
+  }
+}
+
+function verifySample(val) {
+  document.getElementById('verifyInput').value = val;
+  handleVerifySearch();
+}
+
+document.getElementById('verifyInput').addEventListener('keyup', function(e) {
+  if (e.key === 'Enter') handleVerifySearch();
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('regno') || urlParams.get('roll') || urlParams.get('q');
+  if (q) {
+    document.getElementById('verifyInput').value = q;
+    setTimeout(() => { handleVerifySearch(); }, 200);
+  }
+});
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const l = document.getElementById('loading');
+    if (l) l.style.display = 'none';
+  }, 300);
+});
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>
