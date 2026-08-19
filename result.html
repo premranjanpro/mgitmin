@@ -200,6 +200,7 @@
       text-align: right;
     }
     .marks-table {
+      display: none !important;
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 18px;
@@ -571,8 +572,8 @@
           </div>
         </div>
 
-        <!-- MARKS BREAKDOWN TABLE (HIDDEN AS REQUESTED) -->
-        <table class="marks-table" style="display: none;">
+        <!-- MARKS BREAKDOWN TABLE (HIDDEN)
+        <table class="marks-table" style="display: none !important;">
           <thead>
             <tr>
               <th style="width: 10%;">Sl.</th>
@@ -583,7 +584,6 @@
             </tr>
           </thead>
           <tbody id="marksTableBody">
-            <!-- Dynamic rows inserted here -->
           </tbody>
           <tfoot>
             <tr>
@@ -601,6 +601,7 @@
             </tr>
           </tfoot>
         </table>
+        -->
 
         <!-- FOOTER & SIGNATURES -->
         <div class="marksheet-footer">
@@ -909,77 +910,76 @@ function renderMarksheet(student) {
   const statusHtml = `<span class="status-badge-pass">${student.Status || 'PASSED'}</span>`;
   document.getElementById('msStatus').innerHTML = statusHtml;
 
-  // Build Marks Breakdown Rows
+  // Marks breakdown table is hidden
   const tbody = document.getElementById('marksTableBody');
-  tbody.innerHTML = '';
+  if (tbody) {
+    tbody.innerHTML = '';
+    let rowCount = 0;
+    let totalMax = 0;
+    let totalObt = 0;
 
-  let rowCount = 0;
-  let totalMax = 0;
-  let totalObt = 0;
+    function parseMarks(str) {
+      if (!str || !str.includes('/')) return null;
+      const parts = str.split('/');
+      return { obt: parseInt(parts[0], 10), max: parseInt(parts[1], 10) };
+    }
 
-  function parseMarks(str) {
-    if (!str || !str.includes('/')) return null;
-    const parts = str.split('/');
-    return { obt: parseInt(parts[0], 10), max: parseInt(parts[1], 10) };
+    if (student.FirstYear) {
+      rowCount++;
+      const m = parseMarks(student.FirstYear);
+      if (m) { totalObt += m.obt; totalMax += m.max; }
+      tbody.innerHTML += `
+        <tr>
+          <td>${rowCount}</td>
+          <td style="text-align:left;">First Year Examination Transcript</td>
+          <td>${m ? m.max : '--'}</td>
+          <td>${m ? m.obt : student.FirstYear}</td>
+          <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
+        </tr>`;
+    }
+
+    if (student.SecondYear) {
+      rowCount++;
+      const m = parseMarks(student.SecondYear);
+      if (m) { totalObt += m.obt; totalMax += m.max; }
+      tbody.innerHTML += `
+        <tr>
+          <td>${rowCount}</td>
+          <td style="text-align:left;">Second Year Examination Transcript</td>
+          <td>${m ? m.max : '--'}</td>
+          <td>${m ? m.obt : student.SecondYear}</td>
+          <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
+        </tr>`;
+    }
+
+    if (student.ThirdYear) {
+      rowCount++;
+      const m = parseMarks(student.ThirdYear);
+      if (m) { totalObt += m.obt; totalMax += m.max; }
+      tbody.innerHTML += `
+        <tr>
+          <td>${rowCount}</td>
+          <td style="text-align:left;">Third Year Examination Transcript</td>
+          <td>${m ? m.max : '--'}</td>
+          <td>${m ? m.obt : student.ThirdYear}</td>
+          <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
+        </tr>`;
+    }
+
+    if (student.Total && student.Total.includes('/')) {
+      const totParts = student.Total.split('/');
+      totalObt = parseInt(totParts[0], 10);
+      totalMax = parseInt(totParts[1], 10);
+    }
+
+    if (document.getElementById('tfootMax')) document.getElementById('tfootMax').textContent = totalMax > 0 ? totalMax : '--';
+    if (document.getElementById('tfootObt')) document.getElementById('tfootObt').textContent = totalObt > 0 ? totalObt : (student.Total || '--');
+    if (document.getElementById('tfootGrade')) document.getElementById('tfootGrade').textContent = `Grade: ${student.Grade || 'A'}`;
+    const pct = student.Percentage || (totalMax > 0 ? ((totalObt / totalMax) * 100).toFixed(2) + '%' : '--');
+    if (document.getElementById('msPercentage')) document.getElementById('msPercentage').textContent = pct;
+    if (document.getElementById('msDivision')) document.getElementById('msDivision').textContent = student.Division || 'First Division';
+    if (document.getElementById('msFinalGrade')) document.getElementById('msFinalGrade').textContent = student.Grade || 'A';
   }
-
-  if (student.FirstYear) {
-    rowCount++;
-    const m = parseMarks(student.FirstYear);
-    if (m) { totalObt += m.obt; totalMax += m.max; }
-    tbody.innerHTML += `
-      <tr>
-        <td>${rowCount}</td>
-        <td style="text-align:left;">First Year Examination Transcript</td>
-        <td>${m ? m.max : '--'}</td>
-        <td>${m ? m.obt : student.FirstYear}</td>
-        <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
-      </tr>`;
-  }
-
-  if (student.SecondYear) {
-    rowCount++;
-    const m = parseMarks(student.SecondYear);
-    if (m) { totalObt += m.obt; totalMax += m.max; }
-    tbody.innerHTML += `
-      <tr>
-        <td>${rowCount}</td>
-        <td style="text-align:left;">Second Year Examination Transcript</td>
-        <td>${m ? m.max : '--'}</td>
-        <td>${m ? m.obt : student.SecondYear}</td>
-        <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
-      </tr>`;
-  }
-
-  if (student.ThirdYear) {
-    rowCount++;
-    const m = parseMarks(student.ThirdYear);
-    if (m) { totalObt += m.obt; totalMax += m.max; }
-    tbody.innerHTML += `
-      <tr>
-        <td>${rowCount}</td>
-        <td style="text-align:left;">Third Year Examination Transcript</td>
-        <td>${m ? m.max : '--'}</td>
-        <td>${m ? m.obt : student.ThirdYear}</td>
-        <td><span style="color:#16a34a; font-weight:700;">PASSED</span></td>
-      </tr>`;
-  }
-
-  // If Total string exists in record
-  if (student.Total && student.Total.includes('/')) {
-    const totParts = student.Total.split('/');
-    totalObt = parseInt(totParts[0], 10);
-    totalMax = parseInt(totParts[1], 10);
-  }
-
-  document.getElementById('tfootMax').textContent = totalMax > 0 ? totalMax : '--';
-  document.getElementById('tfootObt').textContent = totalObt > 0 ? totalObt : (student.Total || '--');
-  document.getElementById('tfootGrade').textContent = `Grade: ${student.Grade || 'A'}`;
-
-  const pct = student.Percentage || (totalMax > 0 ? ((totalObt / totalMax) * 100).toFixed(2) + '%' : '--');
-  document.getElementById('msPercentage').textContent = pct;
-  document.getElementById('msDivision').textContent = student.Division || 'First Division';
-  document.getElementById('msFinalGrade').textContent = student.Grade || 'A';
 
   // Dynamic QR Code for verification
   const verifyTarget = encodeURIComponent(window.location.origin + window.location.pathname.replace('result.html', 'verify.html') + `?regno=${encodeURIComponent(student.REGNO || student.ROLLNO)}`);
