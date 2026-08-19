@@ -509,7 +509,7 @@
         </div>
         <div style="display: flex; gap: 10px;">
           <button class="btn-primary" style="padding: 10px 20px; font-size: 14px; gap: 8px;" onclick="window.print()">
-            <i class="fa fa-print"></i> Print Single Page Marksheet
+            <i class="fa fa-print"></i> Print Academic Statement
           </button>
           <a id="verifyLinkBtn" href="verify.html" class="btn-secondary" style="padding: 10px 18px; font-size: 14px; gap: 6px; background: #fff; border: 1px solid var(--gray-400);">
             <i class="fa fa-shield"></i> Verify Certificate
@@ -529,7 +529,7 @@
               <div class="marksheet-subhead">An Autonomous Institution Registered under Govt. of India Norms &bull; ISO 9001:2015 Certified</div>
             </div>
           </div>
-          <div class="marksheet-doc-badge">Official Statement of Marks</div>
+          <div class="marksheet-doc-badge">Official Academic Statement</div>
         </div>
 
         <!-- META STRIP -->
@@ -540,7 +540,7 @@
         </div>
 
         <!-- CANDIDATE DETAILS GRID -->
-        <div class="marksheet-details-grid">
+        <div class="marksheet-details-grid" style="margin-bottom: 24px;">
           <div class="detail-row">
             <span class="detail-lbl">Candidate Name:</span>
             <span class="detail-val" id="msName">--</span>
@@ -571,8 +571,8 @@
           </div>
         </div>
 
-        <!-- MARKS BREAKDOWN TABLE -->
-        <table class="marks-table">
+        <!-- MARKS BREAKDOWN TABLE (HIDDEN AS REQUESTED) -->
+        <table class="marks-table" style="display: none;">
           <thead>
             <tr>
               <th style="width: 10%;">Sl.</th>
@@ -613,8 +613,7 @@
             <div>This is a verified computer-generated statement issued by Mahatma Gandhi Institute of Technology &amp; Management. Authenticity can be cross-verified online 24×7.</div>
           </div>
           <div class="sign-area">
-            <div class="sign-graphic">Deepak Sapra</div>
-            <div class="sign-line"></div>
+            <div class="sign-line" style="margin-top: 28px;"></div>
             <div class="sign-title">Controller of Exams</div>
             <div style="font-size: 9px; color: var(--gray-600);">MGITM Delhi NCR</div>
           </div>

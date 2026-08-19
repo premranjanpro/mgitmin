@@ -500,8 +500,8 @@
             <span class="cert-val" id="vIssueDate">--</span>
           </div>
           <div class="cert-row">
-            <span class="cert-lbl">Final Aggregate &amp; Grade:</span>
-            <span class="cert-val" id="vGrade" style="color: #16a34a;">--</span>
+            <span class="cert-lbl">Academic Status:</span>
+            <span class="cert-val" id="vGrade" style="color: #16a34a; font-weight: 800;"><i class="fa fa-check-circle"></i> PASSED / VERIFIED</span>
           </div>
           <div class="cert-row">
             <span class="cert-lbl">Verification Authority:</span>
@@ -522,8 +522,7 @@
             <div>This credential has been verified against the official records maintained at the Central Directorate of MGITM India. For further verification inquiries, contact the registrar at indiamgitm@gmail.com.</div>
           </div>
           <div class="cert-sign">
-            <div class="cert-sign-name">Deepak Sapra</div>
-            <div class="cert-sign-line"></div>
+            <div class="cert-sign-line" style="margin-top: 28px;"></div>
             <div class="cert-sign-title">Controller of Exams</div>
             <div style="font-size: 9px; color: #64748b;">MGITM Directorate</div>
           </div>
@@ -806,8 +805,7 @@ function renderVerification(student) {
   document.getElementById('vDuration').textContent = student.COURSEDURATION || '--';
   document.getElementById('vIssueDate').textContent = student.ISSUEDATE || student.COMPLETEDATE || '--';
   
-  const gradeText = `${student.Grade || 'A'} (${student.Percentage || 'PASSED'}) - ${student.Division || 'First Division'}`;
-  document.getElementById('vGrade').textContent = gradeText;
+  document.getElementById('vGrade').innerHTML = `<i class="fa fa-check-circle"></i> ${(student.Status || 'PASSED').toUpperCase()} / VERIFIED`;
 
   // Live QR Code pointing to this verification record
   const currentUrl = encodeURIComponent(window.location.href);
