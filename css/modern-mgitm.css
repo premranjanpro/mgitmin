@@ -876,3 +876,586 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+
+/* ==========================================================
+   RESULT + CERTIFICATE — RESPONSIVE POLISH v4
+   Mobile-first safety layer for result.html / verify.html
+   ========================================================== */
+
+/* Prevent long IDs, course names and email addresses from
+   forcing horizontal scrolling on narrow screens. */
+.search-panel,
+.marksheet-outer,
+.marksheet-card,
+.verify-search-card,
+.verify-result-wrapper,
+.certificate-card {
+  min-width: 0;
+  width: 100%;
+}
+
+.marksheet-card *,
+.certificate-card * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Search controls: comfortable desktop layout */
+.search-box-row,
+.verify-input-group {
+  align-items: stretch;
+}
+
+.search-box-row input,
+.verify-input-group input {
+  min-width: 0;
+  width: 100%;
+}
+
+.marksheet-actions,
+.verify-actions {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  /* Header */
+  .top-strip .container-fluid,
+  .header-brand .container-fluid {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .header-brand {
+    padding: 12px 0;
+  }
+
+  .header-brand .logo {
+    gap: 9px;
+    min-width: 0;
+  }
+
+  .header-brand .logo img.emblem {
+    height: 48px;
+    width: auto;
+  }
+
+  .header-brand .logo img.title {
+    height: 40px;
+    width: auto;
+  }
+
+  .header-brand .iso-badge {
+    padding: 7px 11px;
+    gap: 7px;
+  }
+
+  .header-brand .iso-badge i {
+    font-size: 18px;
+  }
+
+  .header-brand .iso-badge strong {
+    font-size: 11px;
+  }
+
+  /* Result search */
+  .search-panel {
+    padding: 24px;
+  }
+
+  .search-box-row {
+    flex-direction: column;
+  }
+
+  .search-box-row input,
+  .search-box-row .btn-primary {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  /* Marksheet */
+  .marksheet-outer {
+    max-width: 100%;
+  }
+
+  .marksheet-actions,
+  .verify-actions {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .marksheet-actions > div,
+  .verify-actions > div {
+    width: 100%;
+  }
+
+  .marksheet-actions > div:last-child,
+  .verify-actions > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px !important;
+  }
+
+  .marksheet-actions button,
+  .marksheet-actions a,
+  .verify-actions button,
+  .verify-actions a {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .marksheet-card {
+    padding: 24px 26px;
+  }
+
+  .marksheet-top-brand {
+    align-items: center;
+  }
+
+  .marksheet-top-brand .inst-name {
+    font-size: 18px;
+  }
+
+  .marksheet-meta-strip {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Certificate */
+  .verify-search-card {
+    padding: 26px 24px !important;
+  }
+
+  .verify-input-group {
+    flex-direction: column !important;
+  }
+
+  .verify-input-group input,
+  .verify-input-group button {
+    width: 100% !important;
+    min-height: 50px;
+  }
+
+  .certificate-card {
+    width: 100%;
+  }
+
+  .cert-header {
+    padding: 24px !important;
+  }
+
+  .cert-brand {
+    align-items: center !important;
+  }
+
+  .cert-brand h2 {
+    font-size: 18px !important;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .cert-row[style*="grid-column: span 2"] {
+    grid-column: 1 / -1 !important;
+  }
+
+  .cert-footer {
+    grid-template-columns: 100px 1fr 120px !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* General mobile rhythm */
+  .section {
+    padding: 44px 0 !important;
+  }
+
+  .section-inner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .page-banner {
+    padding: 42px 14px;
+  }
+
+  .page-banner p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* Top bar */
+  .top-strip .container-fluid {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+
+  .top-strip .social {
+    display: none;
+  }
+
+  .top-strip {
+    padding: 7px 0;
+    font-size: 12px;
+  }
+
+  /* Header */
+  .header-brand .container-fluid {
+    justify-content: center;
+  }
+
+  .header-brand .logo {
+    max-width: 100%;
+  }
+
+  .header-brand .logo img.emblem {
+    height: 43px;
+  }
+
+  .header-brand .logo img.title {
+    height: 34px;
+    max-width: calc(100vw - 90px);
+  }
+
+  .header-brand .iso-badge {
+    display: none;
+  }
+
+  /* Search cards */
+  .search-panel,
+  .verify-search-card {
+    padding: 20px 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .search-panel h2,
+  .verify-search-card h2 {
+    font-size: 20px !important;
+    line-height: 1.35;
+  }
+
+  .search-box-row,
+  .verify-input-group {
+    gap: 10px !important;
+  }
+
+  .search-box-row input,
+  .verify-input-group input {
+    font-size: 14px !important;
+    padding: 13px 14px !important;
+  }
+
+  .search-box-row .btn-primary,
+  .verify-input-group .btn-primary {
+    padding: 13px 16px !important;
+    font-size: 13.5px !important;
+  }
+
+  /* Action buttons become a clean vertical stack */
+  .marksheet-actions > div:last-child,
+  .verify-actions > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Marksheet — phone layout */
+  .marksheet-card {
+    padding: 17px 14px !important;
+    border-width: 2px !important;
+    outline-offset: -5px !important;
+    border-radius: 5px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.07);
+    background-size: 14px 14px;
+  }
+
+  .marksheet-card::before {
+    font-size: 58px;
+    letter-spacing: 5px;
+  }
+
+  .marksheet-top-brand {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .marksheet-top-brand img.logo-img {
+    height: 52px !important;
+  }
+
+  .marksheet-top-brand .inst-name {
+    font-size: 15px !important;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .marksheet-subhead {
+    font-size: 8px;
+    line-height: 1.45;
+    letter-spacing: .5px;
+  }
+
+  .marksheet-doc-badge {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  .marksheet-meta-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    font-size: 9.5px;
+    line-height: 1.4;
+    margin: 8px 0 12px;
+  }
+
+  .marksheet-details-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding: 9px 10px !important;
+    margin-bottom: 14px !important;
+    font-size: 11px !important;
+  }
+
+  .marksheet-details-grid .detail-row,
+  .marksheet-details-grid .detail-row[style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    display: grid !important;
+    grid-template-columns: 43% 57%;
+    gap: 7px;
+    align-items: start;
+    padding: 6px 0;
+  }
+
+  .detail-lbl {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .detail-val {
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .status-badge-pass {
+    font-size: 9px;
+    padding: 3px 7px;
+  }
+
+  .marksheet-footer {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    text-align: center;
+    margin-top: 14px !important;
+    padding-top: 12px !important;
+  }
+
+  .qr-area img {
+    width: 78px !important;
+    height: 78px !important;
+  }
+
+  .security-statement {
+    font-size: 9px;
+    padding: 0;
+  }
+
+  .sign-area {
+    order: 3;
+  }
+
+  /* Certificate — phone layout */
+  .verify-result-wrapper {
+    width: 100%;
+  }
+
+  .cert-header {
+    padding: 18px 14px !important;
+  }
+
+  .cert-brand {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 9px !important;
+  }
+
+  .cert-brand img {
+    width: 55px !important;
+    height: 55px !important;
+    object-fit: contain;
+  }
+
+  .cert-brand h2 {
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .cert-subhead {
+    font-size: 8px !important;
+    line-height: 1.45 !important;
+  }
+
+  .cert-title-badge {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 10px !important;
+    line-height: 1.35;
+  }
+
+  .status-banner-verified {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 7px !important;
+    padding: 11px 13px !important;
+    font-size: 9px !important;
+  }
+
+  .status-banner-verified .left,
+  .status-banner-verified .ref-id {
+    width: 100%;
+  }
+
+  .status-banner-verified .ref-id {
+    text-align: left !important;
+    font-size: 8.5px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding: 8px !important;
+  }
+
+  .cert-row,
+  .cert-row[style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    display: grid !important;
+    grid-template-columns: 42% 58%;
+    gap: 7px;
+    align-items: start;
+    padding: 9px 7px !important;
+  }
+
+  .cert-lbl {
+    font-size: 9px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cert-val {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .cert-footer {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 15px 12px !important;
+    text-align: center;
+  }
+
+  .cert-qr,
+  .cert-notice,
+  .cert-sign {
+    width: 100%;
+  }
+
+  .cert-qr img {
+    width: 82px !important;
+    height: 82px !important;
+    margin: 0 auto;
+  }
+
+  .cert-notice {
+    font-size: 9px !important;
+    line-height: 1.5 !important;
+  }
+
+  .cert-sign-line {
+    width: 120px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* No-result cards */
+  #notFoundBox,
+  #vNotFoundBox,
+  #notFoundArea {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 22px 15px !important;
+  }
+
+  #notFoundBox p,
+  #vNotFoundBox p,
+  #notFoundArea p {
+    font-size: 12.5px !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .section-inner {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .marksheet-card {
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+  }
+
+  .marksheet-details-grid .detail-row,
+  .cert-row {
+    grid-template-columns: 40% 60%;
+  }
+
+  .detail-lbl,
+  .cert-lbl {
+    font-size: 9px !important;
+  }
+
+  .detail-val,
+  .cert-val {
+    font-size: 9px !important;
+  }
+
+  .marksheet-top-brand .inst-name {
+    font-size: 13px !important;
+  }
+}
+
+/* Touch devices: remove hover movement that can feel jumpy on mobile */
+@media (hover: none) {
+  .btn-primary:hover,
+  .btn-white:hover,
+  .discipline-card:hover {
+    transform: none;
+  }
+}
+
+/* Print remains a document, not a responsive web card */
+@media print {
+  .marksheet-card,
+  .certificate-card {
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  .marksheet-card *,
+  .certificate-card * {
+    overflow-wrap: normal !important;
+  }
+}
+\n
