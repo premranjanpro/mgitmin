@@ -855,18 +855,19 @@ const FALLBACK_RESULTS = [
   }
 ];
 
-let resultsData = FALLBACK_RESULTS;
+let resultsData = [];
 
-// Load db/results.json if available
-fetch('db/results.json')
-  .then(res => res.json())
+// The JSON database is the single source of truth. Do not display fallback/demo records.
+fetch('db/results.json', { cache: 'no-store' })
+  .then(res => {
+    if (!res.ok) throw new Error('Database unavailable');
+    return res.json();
+  })
   .then(data => {
-    if (Array.isArray(data) && data.length > 0) {
-      resultsData = data;
-    }
+    resultsData = Array.isArray(data) ? data : [];
   })
   .catch(() => {
-    // Uses FALLBACK_RESULTS seamlessly
+    resultsData = [];
   });
 
 // Normalization function for reliable matching
@@ -877,30 +878,15 @@ function cleanStr(str) {
 
 function findStudent(query) {
   if (!query) return null;
-  const rawQ = query.trim().toUpperCase();
   const cleanQ = cleanStr(query);
 
-  // 1. Direct exact or cleaned match
-  let found = resultsData.find(item => {
-    return cleanStr(item.REGNO) === cleanQ ||
-           cleanStr(item.ROLLNO) === cleanQ ||
-           cleanStr(item.ENROLLMENTNO) === cleanQ ||
-           cleanStr(item.ID) === cleanQ ||
-           item.REGNO.toUpperCase() === rawQ ||
-           (item.ROLLNO && item.ROLLNO.toUpperCase() === rawQ);
-  });
-
-  // 2. Contains match if exact not found
-  if (!found) {
-    found = resultsData.find(item => {
-      return cleanStr(item.REGNO).includes(cleanQ) ||
-             cleanStr(item.ROLLNO).includes(cleanQ) ||
-             cleanQ.includes(cleanStr(item.REGNO)) ||
-             cleanQ.includes(cleanStr(item.ROLLNO));
-    });
-  }
-
-  return found;
+  // IMPORTANT: exact normalized matching only.
+  // A partial/contains search is never allowed because it can return the wrong student.
+  return resultsData.find(item =>
+    (item.REGNO && cleanStr(item.REGNO) === cleanQ) ||
+    (item.ROLLNO && cleanStr(item.ROLLNO) === cleanQ) ||
+    (item.ENROLLMENTNO && cleanStr(item.ENROLLMENTNO) === cleanQ)
+  ) || null;
 }
 
 function renderMarksheet(student) {
