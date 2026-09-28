@@ -154,8 +154,21 @@ const FALLBACK_DB = [
   { "REGNO": "MGI/ME/21-249845573", "ROLLNO": "MEI212410587478", "NAME": "TAUHID KHAN", "COURSENAME": "DIPLOMA IN MECHANICAL ENGINEERING", "ISSUEDATE": "09/08/2024", "Total": "2400/3000", "Percentage": "80.00%", "Status": "PASS" }
 ];
 
-let resultDB = FALLBACK_DB;
-fetch('db/results.json').then(r=>r.json()).then(d=>{if(Array.isArray(d)&&d.length>0) resultDB=d;}).catch(()=>{});
+let resultDB = [];
+let resultDBLoaded = false;
+fetch('db/results.json', { cache: 'no-store' })
+  .then(r => {
+    if (!r.ok) throw new Error('Database unavailable');
+    return r.json();
+  })
+  .then(d => {
+    resultDB = Array.isArray(d) ? d : [];
+    resultDBLoaded = true;
+  })
+  .catch(() => {
+    resultDB = [];
+    resultDBLoaded = true;
+  });
 
 function cleanStr(s){return s?String(s).toUpperCase().replace(/[\s\-\/\_\.\:]/g,''):'';}
 
@@ -166,7 +179,13 @@ function verifyResult() {
   if (!roll) { alert('Please enter a Roll/Registration Number'); return; }
   
   const cleanQ = cleanStr(roll);
-  const rec = resultDB.find(item => cleanStr(item.REGNO) === cleanQ || cleanStr(item.ROLLNO) === cleanQ || cleanStr(item.ENROLLMENTNO) === cleanQ);
+  // IMPORTANT: only an exact normalized Roll / Registration / Enrollment number can match.
+  // Partial/contains matching is intentionally disabled so a wrong number can never open another record.
+  const rec = resultDB.find(item =>
+    (item.REGNO && cleanStr(item.REGNO) === cleanQ) ||
+    (item.ROLLNO && cleanStr(item.ROLLNO) === cleanQ) ||
+    (item.ENROLLMENTNO && cleanStr(item.ENROLLMENTNO) === cleanQ)
+  );
 
   if (rec) {
     document.getElementById('resName').textContent = rec.NAME || rec.name;
