@@ -813,9 +813,7 @@ function renderVerification(student) {
   document.getElementById('vNotFoundBox').style.display = 'none';
   document.getElementById('certificateContainer').style.display = 'block';
 
-  const regNum = student.REGNO || student.ENROLLMENTNO || '0000';
-  const cleanRef = regNum.replace(/[^A-Z0-9]/gi, '');
-  document.getElementById('vRefId').textContent = `MGITM/VER/2026/${cleanRef}`;
+  document.getElementById('vRefId').textContent = student.ENROLLMENTNO || student.ENROLLMENT_NO || student.ENROLLMENT || '--';
 
   document.getElementById('vName').textContent = student.NAME || '--';
   document.getElementById('vFather').textContent = student.FATHERNAME || '--';
