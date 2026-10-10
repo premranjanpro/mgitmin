@@ -6,6 +6,9 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Student Marksheet &amp; Result Portal — MGITM India</title>
   <meta name="description" content="Search, view, and print official student examination results, marksheets, and academic statements issued by Mahatma Gandhi Institute of Technology &amp; Management (MGITM).">
   <link rel="shortcut icon" href="images/glogo1.png">
@@ -866,7 +869,7 @@ const FALLBACK_RESULTS = [
 let resultsData = [];
 
 // The JSON database is the single source of truth. Do not display fallback/demo records.
-fetch('db/results.json', { cache: 'no-store' })
+fetch('db/results.json?v=' + Date.now(), { cache: 'no-store' })
   .then(res => {
     if (!res.ok) throw new Error('Database unavailable');
     return res.json();
