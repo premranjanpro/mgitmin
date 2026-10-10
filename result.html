@@ -555,6 +555,14 @@
             <span class="detail-lbl">Father's Name:</span>
             <span class="detail-val" id="msFather">--</span>
           </div>
+          <div class="detail-row" id="msMotherRow" style="display:none;">
+            <span class="detail-lbl">Mother's Name:</span>
+            <span class="detail-val" id="msMother"></span>
+          </div>
+          <div class="detail-row" id="msDobRow" style="display:none;">
+            <span class="detail-lbl">Date of Birth:</span>
+            <span class="detail-val" id="msDob"></span>
+          </div>
           <div class="detail-row">
             <span class="detail-lbl">Roll Number:</span>
             <span class="detail-val" id="msRoll">--</span>
@@ -897,6 +905,12 @@ function renderMarksheet(student) {
   document.getElementById('msIssueDate').textContent = student.ISSUEDATE || 'Official Record';
   document.getElementById('msName').textContent = student.NAME || '--';
   document.getElementById('msFather').textContent = student.FATHERNAME || '--';
+  const motherName = String(student.MOTHERNAME || student.MOTHER_NAME || '').trim();
+  const dob = String(student.DATEOFBIRTH || student.DOB || student.DATE_OF_BIRTH || '').trim();
+  document.getElementById('msMother').textContent = motherName;
+  document.getElementById('msMotherRow').style.display = motherName ? '' : 'none';
+  document.getElementById('msDob').textContent = dob;
+  document.getElementById('msDobRow').style.display = dob ? '' : 'none';
   document.getElementById('msRoll').textContent = student.ROLLNO || student.REGNO || '--';
   document.getElementById('msReg').textContent = student.REGNO || student.ENROLLMENTNO || '--';
   document.getElementById('msCourse').textContent = student.COURSENAME || '--';
