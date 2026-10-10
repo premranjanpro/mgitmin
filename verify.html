@@ -442,6 +442,7 @@
           </span>
         </div>
         <div style="display: flex; gap: 10px;">
+<a id="downloadVerifiedCertificateBtn" href="#" class="btn-secondary" style="display:none; padding:10px 18px; font-size:14px; gap:6px; background:#fff; border:1px solid #16a34a; color:#15803d;" download><i class="fa fa-download"></i> Download Certificate</a>
           <button class="btn-primary" style="padding: 10px 20px; font-size: 14px; gap: 8px; background: #1e3a8a;" onclick="window.print()">
             <i class="fa fa-print"></i> Print Verification Certificate
           </button>
@@ -809,7 +810,42 @@ function findStudent(query) {
   return found;
 }
 
+
+// Show a download button only when the matching enrollment-number PDF exists.
+// File naming rule: certificate/<enrollment number with / replaced by _>.pdf
+async function setupCertificateDownload(student, buttonId) {
+  const button = document.getElementById(buttonId);
+  if (!button) return;
+  button.style.display = 'none';
+  button.removeAttribute('href');
+  button.removeAttribute('download');
+
+  const enrollment = String(
+    student.ENROLLMENTNO || student.ENROLLMENT_NO || student.ENROLLMENT ||
+    student.REGNO || student.REGISTRATIONNO || ''
+  ).trim();
+  if (!enrollment) return;
+
+  // Convert enrollment number to a safe, predictable filename.
+  const fileName = enrollment.replace(/[\\/]+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '_') + '.pdf';
+  const fileUrl = 'certificate/' + encodeURIComponent(fileName);
+  try {
+    const response = await fetch(fileUrl + '?v=' + Date.now(), {
+      method: 'HEAD',
+      cache: 'no-store'
+    });
+    if (!response.ok) return;
+    button.href = fileUrl;
+    button.setAttribute('download', fileName);
+    button.style.display = 'inline-flex';
+  } catch (error) {
+    // If the file cannot be checked, keep the download button hidden.
+    button.style.display = 'none';
+  }
+}
+
 function renderVerification(student) {
+  setupCertificateDownload(student, 'downloadVerifiedCertificateBtn');
   document.getElementById('vNotFoundBox').style.display = 'none';
   document.getElementById('certificateContainer').style.display = 'block';
 
