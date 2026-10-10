@@ -6,6 +6,9 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Online Certificate Verification Portal — MGITM India</title>
   <meta name="description" content="Official online certificate and credential verification portal of Mahatma Gandhi Institute of Technology &amp; Management (MGITM). Instantly authenticate student certificates, diplomas, and marksheets.">
   <link rel="shortcut icon" href="images/glogo1.png">
@@ -766,7 +769,7 @@ const FALLBACK_RESULTS = [
 
 let verifyData = FALLBACK_RESULTS;
 
-fetch('db/results.json')
+fetch('db/results.json?v=' + Date.now(), { cache: 'no-store' })
   .then(res => res.json())
   .then(data => {
     if (Array.isArray(data) && data.length > 0) {
