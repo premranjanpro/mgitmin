@@ -484,6 +484,14 @@
             <span class="cert-lbl">Father's Name:</span>
             <span class="cert-val" id="vFather">--</span>
           </div>
+          <div class="cert-row" id="vMotherRow" style="display:none;">
+            <span class="cert-lbl">Mother's Name:</span>
+            <span class="cert-val" id="vMother"></span>
+          </div>
+          <div class="cert-row" id="vDobRow" style="display:none;">
+            <span class="cert-lbl">Date of Birth:</span>
+            <span class="cert-val" id="vDob"></span>
+          </div>
           <div class="cert-row">
             <span class="cert-lbl">Enrollment / Reg No:</span>
             <span class="cert-val" id="vReg" style="color: #1e3a8a;">--</span>
@@ -808,6 +816,12 @@ function renderVerification(student) {
 
   document.getElementById('vName').textContent = student.NAME || '--';
   document.getElementById('vFather').textContent = student.FATHERNAME || '--';
+  const motherName = String(student.MOTHERNAME || student.MOTHER_NAME || '').trim();
+  const dob = String(student.DATEOFBIRTH || student.DOB || student.DATE_OF_BIRTH || '').trim();
+  document.getElementById('vMother').textContent = motherName;
+  document.getElementById('vMotherRow').style.display = motherName ? '' : 'none';
+  document.getElementById('vDob').textContent = dob;
+  document.getElementById('vDobRow').style.display = dob ? '' : 'none';
   document.getElementById('vReg').textContent = student.REGNO || student.ENROLLMENTNO || '--';
   document.getElementById('vRoll').textContent = student.ROLLNO || student.REGNO || '--';
   document.getElementById('vCourse').textContent = student.COURSENAME || '--';
