@@ -813,6 +813,8 @@ function findStudent(query) {
 
 // Show a download button only when the matching enrollment-number PDF exists.
 // File naming rule: certificate/<enrollment number with / replaced by _>.pdf
+// Check possible certificate filenames, including the exact roll/enrollment number format
+// such as certificate/MGINTT1214154928.pdf.
 async function setupCertificateDownload(student, buttonId) {
   const button = document.getElementById(buttonId);
   if (!button) return;
@@ -820,27 +822,34 @@ async function setupCertificateDownload(student, buttonId) {
   button.removeAttribute('href');
   button.removeAttribute('download');
 
-  const enrollment = String(
-    student.ENROLLMENTNO || student.ENROLLMENT_NO || student.ENROLLMENT ||
-    student.REGNO || student.REGISTRATIONNO || ''
-  ).trim();
-  if (!enrollment) return;
+  const identifiers = [
+    student.ENROLLMENTNO, student.ENROLLMENT_NO, student.ENROLLMENT,
+    student.REGNO, student.REGISTRATIONNO, student.ROLLNO
+  ].filter(Boolean).map(value => String(value).trim()).filter(Boolean);
 
-  // Convert enrollment number to a safe, predictable filename.
-  const fileName = enrollment.replace(/[\\/]+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '_') + '.pdf';
-  const fileUrl = 'certificate/' + encodeURIComponent(fileName);
-  try {
-    const response = await fetch(fileUrl + '?v=' + Date.now(), {
-      method: 'HEAD',
-      cache: 'no-store'
-    });
-    if (!response.ok) return;
-    button.href = fileUrl;
-    button.setAttribute('download', fileName);
-    button.style.display = 'inline-flex';
-  } catch (error) {
-    // If the file cannot be checked, keep the download button hidden.
-    button.style.display = 'none';
+  // Try exact identifier first (e.g. MGINTT1214154928.pdf), then a slash-to-underscore filename.
+  const fileNames = [...new Set(identifiers.flatMap(value => {
+    const safe = value.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const compact = value.replace(/[^a-zA-Z0-9]/g, '');
+    return [safe + '.pdf', compact + '.pdf'];
+  }))];
+
+  for (const fileName of fileNames) {
+    const fileUrl = 'certificate/' + encodeURIComponent(fileName);
+    try {
+      const response = await fetch(fileUrl + '?v=' + Date.now(), {
+        method: 'HEAD',
+        cache: 'no-store'
+      });
+      if (response.ok) {
+        button.href = fileUrl;
+        button.setAttribute('download', fileName);
+        button.style.display = 'inline-flex';
+        return;
+      }
+    } catch (error) {
+      // Continue checking other valid filename formats.
+    }
   }
 }
 
