@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found - MGITM</title>
+  <script>
+    (function () {
+      var path = window.location.pathname.toLowerCase();
+
+      // Old ASP.NET result URL used in printed QR codes.
+      if (path === "/result.aspx") {
+        window.location.replace("/result.html" + window.location.search + window.location.hash);
+        return;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Page not found</h1>
+    <p>The requested page could not be found.</p>
+    <p><a href="/result.html">Open Student Result</a></p>
+  </main>
+</body>
+</html>
