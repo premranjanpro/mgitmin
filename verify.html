@@ -768,48 +768,40 @@ const FALLBACK_RESULTS = [
   }
 ];
 
-let verifyData = FALLBACK_RESULTS;
+let verifyData = [];
+let verifyDataError = null;
 
-fetch('db/results.json?v=' + Date.now(), { cache: 'no-store' })
-  .then(res => res.json())
-  .then(data => {
-    if (Array.isArray(data) && data.length > 0) {
-      verifyData = data;
-    }
+// Load the live JSON database before attempting any QR-code lookup.
+const verifyDataReady = fetch('/db/results.json?v=' + Date.now(), { cache: 'no-store' })
+  .then(response => {
+    if (!response.ok) throw new Error('Student database could not be loaded (' + response.status + ').');
+    return response.json();
   })
-  .catch(() => {});
+  .then(data => {
+    if (!Array.isArray(data)) throw new Error('Student database format is invalid.');
+    verifyData = data;
+    return data;
+  })
+  .catch(error => {
+    verifyDataError = error;
+    verifyData = [];
+    throw error;
+  });
 
-function cleanStr(str) {
-  if (!str) return '';
-  return String(str).toUpperCase().replace(/[\s\-\/\_\.\:]/g, '');
+function cleanStr(value) {
+  return String(value || '').toUpperCase().replace(/[\\s\\-\\/\\_\\.\\:]/g, '');
 }
 
 function findStudent(query) {
-  if (!query) return null;
-  const rawQ = query.trim().toUpperCase();
   const cleanQ = cleanStr(query);
+  if (!cleanQ) return null;
 
-  let found = verifyData.find(item => {
-    return cleanStr(item.REGNO) === cleanQ ||
-           cleanStr(item.ROLLNO) === cleanQ ||
-           cleanStr(item.ENROLLMENTNO) === cleanQ ||
-           cleanStr(item.ID) === cleanQ ||
-           item.REGNO.toUpperCase() === rawQ ||
-           (item.ROLLNO && item.ROLLNO.toUpperCase() === rawQ);
-  });
-
-  if (!found) {
-    found = verifyData.find(item => {
-      return cleanStr(item.REGNO).includes(cleanQ) ||
-             cleanStr(item.ROLLNO).includes(cleanQ) ||
-             cleanQ.includes(cleanStr(item.REGNO)) ||
-             cleanQ.includes(cleanStr(item.ROLLNO));
-    });
-  }
-
-  return found;
+  // Exact normalized match only; empty fields are safely ignored.
+  return verifyData.find(item =>
+    [item.REGNO, item.ROLLNO, item.ENROLLMENTNO, item.ENROLLMENT_NO]
+      .some(value => cleanStr(value) === cleanQ)
+  ) || null;
 }
-
 
 // Show a download button only when the matching enrollment-number PDF exists.
 // File naming rule: certificate/<enrollment number with / replaced by _>.pdf
@@ -887,19 +879,35 @@ function renderVerification(student) {
   document.getElementById('certificateContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function handleVerifySearch() {
+async function handleVerifySearch() {
   const q = document.getElementById('verifyInput').value.trim();
   if (!q) {
     alert('Please enter a Registration Number or Roll Number to verify');
     return;
   }
-  const student = findStudent(q);
-  if (student) {
-    renderVerification(student);
-  } else {
-    document.getElementById('certificateContainer').style.display = 'none';
+
+  const button = document.querySelector('.verify-input-group button');
+  if (button) button.disabled = true;
+  document.getElementById('vNotFoundBox').style.display = 'none';
+  document.getElementById('certificateContainer').style.display = 'none';
+
+  try {
+    await verifyDataReady;
+    const student = findStudent(q);
+    if (student) {
+      renderVerification(student);
+    } else {
+      document.getElementById('vSearchedQuery').textContent = q;
+      document.getElementById('vNotFoundBox').style.display = 'block';
+    }
+  } catch (error) {
     document.getElementById('vSearchedQuery').textContent = q;
     document.getElementById('vNotFoundBox').style.display = 'block';
+    const message = document.querySelector('#vNotFoundBox p');
+    if (message) message.textContent = 'The verification database is temporarily unavailable. Please refresh and try again.';
+    console.error('MGITM verification database error:', error);
+  } finally {
+    if (button) button.disabled = false;
   }
 }
 
@@ -917,7 +925,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const q = urlParams.get('regno') || urlParams.get('roll') || urlParams.get('q');
   if (q) {
     document.getElementById('verifyInput').value = q;
-    setTimeout(() => { handleVerifySearch(); }, 200);
+    handleVerifySearch();
   }
 });
 
